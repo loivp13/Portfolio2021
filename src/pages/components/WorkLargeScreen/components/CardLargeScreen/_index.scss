@@ -1,0 +1,65 @@
+.CardLargeScreen {
+  width: 95%;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+
+  &_container {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    &-left {
+      width: 55%;
+      box-shadow: 2px 3px 7px grey;
+    }
+    &-right {
+      width: 35%;
+    }
+  }
+  &_image {
+    &-work {
+      border-radius: 15px;
+      box-shadow: 2px 2px 12px #2a4e4b4f;
+    }
+  }
+  &_header {
+    letter-spacing: 1.3pt;
+    @include respond("lg") {
+      font-size: 25pt;
+    }
+    @include respond("xl") {
+      font-size: 30pt;
+    }
+  }
+  &_description {
+    margin-bottom: 1rem;
+    @include respond("lg") {
+      font-size: 14pt;
+    }
+    @include respond("xl") {
+      font-size: 16pt;
+    }
+  }
+  &_button {
+    &-more {
+      text-transform: uppercase;
+      background-color: var(--primary-light);
+      text-align: center;
+      width: 130px;
+      color: white;
+      border-radius: 8px;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      & > div {
+        width: 10px;
+      }
+    }
+    &-more:hover {
+      background-color: var(--primary);
+      cursor: pointer;
+    }
+  }
+}

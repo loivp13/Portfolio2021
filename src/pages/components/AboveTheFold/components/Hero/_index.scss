@@ -1,0 +1,73 @@
+.Hero {
+  background-color: var(--teritary);
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  height: 70vw;
+  z-index: 1500;
+  position: relative;
+  @include respond("xs") {
+    height: 80vw;
+  }
+  @include respond("sm") {
+  }
+  @include respond("xl") {
+    height: 90vh;
+  }
+  & > .Typewriter {
+    margin-left: 5vw;
+    margin-top: 20%;
+    line-height: 1.5rem;
+    @include respond("sm") {
+      margin-left: 7vw;
+      margin-top: 15%;
+    }
+    @include respond("md") {
+      margin-top: 10%;
+
+      margin-left: 7vw;
+      line-height: 2.5rem;
+    }
+    @include respond("lg") {
+      line-height: 3rem;
+      margin-left: 12vw;
+    }
+    @include respond("xl") {
+      margin-top: 8%;
+      line-height: 4rem;
+    }
+  }
+  &_name {
+    letter-spacing: 3.2pt;
+    display: inline;
+  }
+  &_arrow {
+    width: 1.25rem;
+    height: 1.25rem;
+    position: absolute;
+    bottom: 1rem;
+    align-self: center;
+    @include respond("sm") {
+      width: 2rem;
+      bottom: 1.3rem;
+    }
+    @include respond("md") {
+      width: 2.2rem;
+      bottom: 3.5rem;
+    }
+    @include respond("lg") {
+      width: 2.5rem;
+    }
+  }
+  &_title {
+    display: inline;
+  }
+  &_typewriter {
+    &-cursor {
+      color: var(--primary-light);
+      font-size: calc(12px + 9vw);
+      opacity: 1;
+    }
+  }
+}

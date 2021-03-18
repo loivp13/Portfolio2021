@@ -1,0 +1,99 @@
+.WorkLargeScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+  & > * {
+    margin-bottom: 2rem;
+    @include respond("lg") {
+      margin-bottom: 3rem;
+    }
+  }
+  &:nth-child(5) {
+    margin-bottom: 6rem;
+  }
+
+  &_title {
+    letter-spacing: 1.6pt;
+  }
+  &_line-green {
+    position: absolute;
+    top: 3rem;
+    bottom: 1rem;
+    width: 3px;
+    background-color: var(--primary-light);
+    z-index: -1;
+  }
+  &_more {
+    text-transform: uppercase;
+    background-color: var(--primary-light);
+    text-align: center;
+    width: 140px;
+    color: white;
+    border-radius: 15px;
+    padding: 0.5rem;
+  }
+  &_more:hover {
+    background-color: var(--primary);
+  }
+  &_showMore {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    @include respond("lg") {
+      height: 17rem;
+    }
+    @include respond("lg") {
+      height: 20rem;
+    }
+    & .CardLargeScreen_container-left {
+      width: 0%;
+    }
+    & .CardLargeScreen_container-right {
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+      & > * {
+        margin-bottom: 0.5rem;
+      }
+
+      & .h2 {
+        @include respond("md") {
+          font-size: 14pt;
+        }
+        @include respond("lg") {
+          font-size: 18pt;
+        }
+        @include respond("xl") {
+          font-size: 25pt;
+        }
+      }
+      & .h2-mont {
+        @include respond("md") {
+          font-size: 0.9rem;
+        }
+        @include respond("lg") {
+          font-size: 1.3rem;
+        }
+        @include respond("xl") {
+          font-size: 1.5rem;
+        }
+      }
+    }
+    width: 100%;
+    & > * {
+      border-radius: 0;
+      padding: 2rem 0;
+      width: 32%;
+      background-color: var(--teritary);
+      color: white;
+    }
+    & > * {
+      margin-bottom: 2rem;
+    }
+  }
+}

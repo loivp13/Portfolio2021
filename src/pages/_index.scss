@@ -1,0 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Bungee&family=Montserrat&display=swap");
+
+//Fonts
+
+//Colors
+$font-bungee: "Bungee", cursive;
+$font-mont: "Montserrat", sans-serif;
+:root {
+  --primary: #57b7af;
+  --primary-light: #73d2ca;
+  --secondary: #ffffff;
+  --teritary: #141414;
+  --grey: #d5d5d5;
+}
+
+@import "./siteSass";
+
+html {
+  scroll-behavior: smooth;
+}
+.Home {
+  background-color: #2a4e4b1f;
+  position: relative;
+}
+*:focus {
+  outline: var(--primary-light) auto 1px;
+}

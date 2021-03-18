@@ -1,0 +1,110 @@
+.OverlayItem {
+  position: relative;
+  min-width: 100vw;
+  background-color: white;
+  height: 150%;
+  &_Navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    position: sticky;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background-color: white;
+  }
+  &_arrows {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    & > * {
+      padding: 0.1rem 1.2rem 0.5rem 1.2rem;
+    }
+  }
+  &_close {
+    width: 15%;
+    background: var(--grey);
+    & > * {
+      padding: 0.7rem;
+    }
+  }
+  &_button {
+    width: 100%;
+  }
+
+  &_main {
+    padding: 0 1rem 1rem 1rem;
+    margin-bottom: 2rem;
+  }
+  &_title {
+    letter-spacing: 2.4pt;
+    margin-bottom: 0.5rem;
+  }
+  &_description {
+    margin-bottom: 1rem;
+  }
+  &_visit {
+    padding: 9px 15px;
+    text-transform: uppercase;
+    letter-spacing: 1.2pt;
+    background-color: var(--primary-light);
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 12px;
+  }
+  &_link {
+    margin-bottom: 1rem;
+    & ~ div {
+      margin-bottom: 1rem;
+    }
+  }
+  &_excerpt {
+    padding: 1rem;
+  }
+  &_bulletPoints {
+    padding: 0 15%;
+    letter-spacing: 1.6pt;
+    margin: 0 auto;
+    & > * {
+      text-indent: -1rem;
+      padding-left: 1rem;
+    }
+  }
+  &_image2 {
+    & > * {
+      padding: 2rem;
+    }
+  }
+  &_border {
+    &-clever {
+      background-color: var(--primary);
+    }
+    &-hearts {
+      background-color: #c8d7d2;
+    }
+    &-netflix {
+      background-color: #fe0000;
+    }
+  }
+  &_animation-ltr {
+    position: absolute;
+    right: 100vw;
+    z-index: 100;
+    &-2 {
+      position: absolute;
+      right: 100vw;
+      z-index: 100;
+    }
+  }
+  &_animation-rtl {
+    position: absolute;
+    left: 100vw;
+  }
+  &-main {
+    transform: none !important;
+  }
+}

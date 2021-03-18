@@ -1,0 +1,78 @@
+.Navbar {
+  position: fixed;
+  z-index: 3000;
+  top: 0;
+  width: 100%;
+  margin-top: 41.59px;
+  @include respond("lg") {
+    display: none;
+  }
+
+  &-button {
+    width: 32px;
+    height: 32px;
+    &-menu {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &-items {
+    display: flex;
+    & > * {
+      margin-right: 1rem;
+      font-size: 24px;
+    }
+    & > *:hover span {
+      opacity: 1;
+    }
+    & > *:hover {
+      font-weight: bold;
+    }
+  }
+  &-menu {
+    height: 37vh;
+    width: 100vw;
+    background-color: var(--secondary);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    position: absolute;
+    opacity: 0;
+    @include respond("sm") {
+      height: 50vh;
+    }
+    @include respond("md") {
+      height: 70vh;
+    }
+
+    &-item {
+      width: 100%;
+      height: 33%;
+      text-align: center;
+      border-top: 1px solid var(--grey);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    &-items {
+      border-top: 1px solid var(--grey);
+      border-bottom: 1px solid var(--grey);
+      width: 100%;
+      height: 33%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0 8% 0 8%;
+    }
+    &-icon {
+      width: 4rem;
+      margin: 0 0.2rem 0 0.2rem;
+      @include respond("md") {
+        width: 6.5rem;
+      }
+    }
+  }
+}

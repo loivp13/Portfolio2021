@@ -1,0 +1,28 @@
+.AboutMe {
+  background-color: var(--teritary);
+  padding: 1.5rem;
+  color: #ffffff;
+  margin: 1rem;
+  border-radius: 15px;
+
+  &_title {
+    text-align: center;
+  }
+  &_header {
+    display: flex;
+    margin-bottom: 1rem;
+    &-caption {
+      margin-top: auto;
+    }
+    &-image {
+      margin-left: auto;
+      width: 70px;
+      height: auto;
+    }
+  }
+  &_main {
+    p:not(:last-child) {
+      margin-bottom: 1rem;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+.Work {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+  & > *:not(:last-child) {
+    margin-bottom: 2rem;
+  }
+  &_title {
+    letter-spacing: 1.6pt;
+  }
+  &_line-green {
+    position: absolute;
+    top: 3rem;
+    bottom: 1rem;
+    width: 3px;
+    background-color: var(--primary-light);
+    z-index: -1;
+  }
+  &_more {
+    text-transform: uppercase;
+    background-color: var(--primary-light);
+    text-align: center;
+    width: 140px;
+    color: white;
+    border-radius: 15px;
+    padding: 0.5rem;
+  }
+  &_more:hover {
+    background-color: var(--primary);
+  }
+  &_showMore {
+    position: relative;
+    max-height: 0;
+    overflow: hidden;
+    & > *:not(:last-of-type) {
+      margin-bottom: 2rem;
+    }
+  }
+}

@@ -1,11 +1,20 @@
 {
-  "name": "www",
+  "name": "portfolio2021",
   "version": "1.0.0",
   "private": true,
-  "description": "www",
+  "description": "Loi Van Pham Portfolio 2021",
   "author": "Loi",
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "portfolio",
+    "2021",
+    "web developer",
+    "html5",
+    "css3",
+    "wordpress",
+    "react",
+    "gatsbyjs",
+    "sass"
   ],
   "scripts": {
     "develop": "gatsby develop",
@@ -15,8 +24,10 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "gatsby": "^2.32.8",
+    "animejs": "^3.2.1",
+    "gatsby": "^2.32.9",
     "gatsby-image": "^2.11.0",
+    "gatsby-plugin-image": "^1.0.0",
     "gatsby-plugin-manifest": "^2.12.1",
     "gatsby-plugin-offline": "^3.10.2",
     "gatsby-plugin-react-helmet": "^3.10.0",
@@ -28,6 +39,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
-    "sass": "^1.32.8"
+    "react-responsive": "^8.2.0",
+    "sass": "^1.32.8",
+    "typewriter-effect": "^2.17.0"
   }
 }

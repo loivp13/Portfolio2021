@@ -1,0 +1,11 @@
+.Logo {
+  @include respond("lg") {
+    font-size: 25pt;
+  }
+  &:hover {
+    color: var(--primary);
+  }
+  &:hover > span {
+    color: black;
+  }
+}

@@ -1,0 +1,87 @@
+* {
+  font-family: $font-mont;
+}
+
+.h1 {
+  font-family: $font-bungee;
+  font-size: 32pt;
+  &-mont {
+    font-family: $font-mont;
+    font-size: 32pt;
+  }
+  &-white {
+    font-family: $font-bungee;
+    font-size: 32pt;
+    color: var(--secondary);
+  }
+}
+.h2 {
+  font-family: $font-bungee;
+  font-size: 20pt;
+  &-white {
+    font-family: $font-mont;
+    font-size: 20pt;
+    color: var(--secondary);
+  }
+}
+
+.h3 {
+  font-family: $font-bungee;
+  font-size: 16pt;
+  @include respond("sm") {
+    font-size: 20pt;
+  }
+  @include respond("md") {
+    font-size: 25pt;
+  }
+}
+.h4 {
+  font-family: $font-bungee;
+  font-size: 12pt;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.p {
+  font-size: 12pt;
+  line-height: 20pt;
+}
+
+.heroFont {
+  font-size: 25pt;
+  font-family: $font-bungee;
+  color: white;
+  text-align: center;
+  @include respond("xs") {
+    font-size: 33pt;
+  }
+  @include respond("sm") {
+    font-size: 45pt;
+  }
+  @include respond("md") {
+    font-size: 58pt;
+  }
+  @include respond("lg") {
+    font-size: 70pt;
+  }
+  @include respond("xl") {
+    font-size: 80pt;
+  }
+}
+.heroFont_sub {
+  font-size: 16pt;
+  font-family: $font-mont;
+  color: white;
+  text-align: center;
+  @include respond("md") {
+    font-size: 26pt;
+  }
+  @include respond("lg") {
+    font-size: 30pt;
+  }
+  @include respond("xl") {
+    font-size: 35pt;
+  }
+}

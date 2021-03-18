@@ -1,0 +1,25 @@
+.primary {
+  &-text {
+    color: var(--primary);
+  }
+  &-bg {
+    background-color: var(--primary);
+  }
+}
+
+.secondary {
+  &-text {
+    color: var(--secondary);
+  }
+  &-bg {
+    background-color: var(--secondary);
+  }
+}
+.teritary {
+  &-text {
+    color: var(--teritary);
+  }
+  &-bg {
+    background-color: var(--teritary);
+  }
+}
