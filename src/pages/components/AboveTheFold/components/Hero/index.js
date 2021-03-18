@@ -66,7 +66,6 @@ export default function Hero() {
         options={{
           cursorClassName: "Hero_typewriter-cursor",
           wrapperClassName: "Hero_typewriter-container",
-          devMode: true,
         }}
       ></Typewriter>
 
