@@ -1,18 +1,58 @@
 .Contact {
+  margin: 2rem 0;
   &_title {
     text-align: center;
     margin-bottom: 1.5rem;
+    @include respond("xl") {
+      margin: 3rem 0;
+    }
   }
   &_images {
     display: flex;
     justify-content: space-around;
     margin-bottom: 1.5rem;
     padding: 0.5rem;
+    @include respond("xs") {
+    }
+    @include respond("sm") {
+    }
+    @include respond("md") {
+      padding: 0 5%;
+    }
+    @include respond("lg") {
+    }
+    @include respond("xl") {
+      margin-bottom: 4rem;
+    }
     & > * {
       width: 25%;
+      @include respond("sm") {
+      }
+      @include respond("lg") {
+        width: 20%;
+      }
     }
     & > *:hover {
       cursor: pointer;
+    }
+    &-wrapper {
+      position: relative;
+      height: 20vw;
+      @include respond("lg") {
+        height: 15vw;
+      }
+
+      & > * {
+        position: absolute !important;
+        top: 0;
+        left: 50%;
+        width: 20vw;
+        height: auto;
+        transform: translate(-50%, 0);
+        @include respond("lg") {
+          width: 15vw;
+        }
+      }
     }
   }
 }

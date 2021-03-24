@@ -3,18 +3,37 @@
   border-radius: 15px;
   display: flex;
   justify-content: center;
-
+  &_button {
+    &-more {
+      text-transform: uppercase;
+      background-color: var(--primary-light);
+      width: 130px;
+      color: white;
+      border-radius: 8px;
+      padding: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      & > div {
+        width: 10px;
+      }
+    }
+    &-more:hover {
+      background-color: var(--primary);
+      cursor: pointer;
+    }
+  }
   &_container {
     display: flex;
     width: 100%;
     justify-content: space-around;
     align-items: center;
     &-left {
-      width: 55%;
-      box-shadow: 2px 3px 55px grey;
+      width: 50%;
+      box-shadow: 6px 6px 9px 0px #80808059;
     }
     &-right {
-      width: 35%;
+      width: 45%;
     }
   }
   &_image {
@@ -39,27 +58,6 @@
     }
     @include respond("xl") {
       font-size: 16pt;
-    }
-  }
-  &_button {
-    &-more {
-      text-transform: uppercase;
-      background-color: var(--primary-light);
-      text-align: center;
-      width: 130px;
-      color: white;
-      border-radius: 8px;
-      padding: 0.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      & > div {
-        width: 10px;
-      }
-    }
-    &-more:hover {
-      background-color: var(--primary);
-      cursor: pointer;
     }
   }
 }

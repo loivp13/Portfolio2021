@@ -17,11 +17,17 @@
 }
 .h2 {
   font-family: $font-bungee;
-  font-size: 20pt;
+  font-size: 16pt;
   &-white {
     font-family: $font-mont;
     font-size: 20pt;
     color: var(--secondary);
+  }
+  @include respond("sm") {
+    font-size: 18pt;
+  }
+  @include respond("lg") {
+    font-size: 20pt;
   }
 }
 
@@ -34,10 +40,31 @@
   @include respond("md") {
     font-size: 25pt;
   }
+  @include respond("lg") {
+    font-size: 33pt;
+  }
 }
 .h4 {
   font-family: $font-bungee;
   font-size: 12pt;
+  @include respond("xs") {
+    font-size: 14pt;
+  }
+  @include respond("sm") {
+    font-size: 16pt;
+  }
+  @include respond("md") {
+    font-size: 20pt;
+  }
+  @include respond("lg") {
+    font-size: 22pt;
+  }
+  @include respond("xl") {
+    font-size: 26pt;
+  }
+  @media screen and (min-width: 1600px) {
+    font-size: 30pt;
+  }
 }
 
 .text-bold {

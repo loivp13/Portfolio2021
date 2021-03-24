@@ -1,12 +1,14 @@
 .OverlayItem {
   position: relative;
-  min-width: 100vw;
-  background-color: white;
-  height: 150%;
+  min-width: 100%;
+  background-color: #ffffff;
+  height: min-content;
+  @include respond("xl") {
+    padding-top: 2rem;
+  }
   &_Navbar {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     margin-bottom: 1rem;
 
     position: sticky;
@@ -14,36 +16,101 @@
     top: 0;
     z-index: 1000;
     background-color: white;
+    @include respond("xl") {
+      position: absolute;
+      flex-direction: column;
+      width: 8vw;
+      right: 0;
+      height: 24vw;
+      max-width: 120px;
+      max-height: 360px;
+    }
   }
   &_arrows {
     display: flex;
     justify-content: space-between;
-    width: 28%;
+    width: 7rem;
+    @include respond("xl") {
+      flex-direction: column;
+      align-items: center;
+      order: 1;
+      height: 66.6666%;
+      width: 100%;
+    }
     & > * {
       padding: 0.1rem 1.2rem 0.5rem 1.2rem;
+
+      @include respond("xl") {
+        height: 50% !important;
+        padding: 2.25rem 2.75rem;
+      }
+    }
+    & div:first-child {
+      @include respond("xl") {
+        order: 2;
+      }
     }
   }
   &_close {
-    width: 11%;
-    background: var(--grey);
+    width: 3rem;
     & > * {
       padding: 0.7rem;
+      @include respond("xl") {
+        padding: 2.25rem;
+      }
+    }
+    @include respond("xl") {
+      background: var(--grey);
+
+      height: 33%;
+      width: 100%;
+      &:hover {
+        background-color: var(--primary);
+      }
     }
   }
   &_button {
     width: 100%;
+    display: flex;
+    & > div {
+      width: 100%;
+      margin: auto;
+    }
+    @include respond("xl") {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      justify-content: center;
+    }
   }
 
   &_main {
     padding: 0 1rem 1rem 1rem;
-    margin-bottom: 2rem;
+    @include respond("md") {
+      display: flex;
+      flex-direction: column;
+      padding: 0 2rem 2rem 2rem;
+    }
+    @include respond("lg") {
+      padding: 0 10% 5% 10%;
+    }
+    @include respond("xl") {
+      padding: 0 15% 5% 15%;
+    }
   }
   &_title {
     letter-spacing: 2.4pt;
     margin-bottom: 0.5rem;
+    @include respond("sm") {
+      font-size: 28pt;
+    }
   }
   &_description {
     margin-bottom: 1rem;
+    @include respond("sm") {
+      font-size: 1.25rem;
+    }
   }
   &_visit {
     padding: 9px 15px;
@@ -55,47 +122,237 @@
     text-align: center;
     white-space: nowrap;
     font-size: 12px;
+    @include respond("sm") {
+      font-size: 18px;
+    }
   }
   &_link {
     margin-bottom: 1rem;
     & ~ div {
       margin-bottom: 2rem;
+      @include respond("lg") {
+        margin-bottom: 4rem;
+      }
     }
   }
   &_excerpt {
     padding: 1rem;
+
+    display: flex;
+    justify-content: space-between;
+    @include respond("sm") {
+      font-size: 24px;
+    }
+
+    @include respond("md") {
+      align-items: center;
+
+      &:before {
+        content: "\a0";
+        display: block;
+        justify-content: center;
+        width: 43%;
+        height: 2px;
+        background-color: var(--primary-light);
+        @include respond("lg") {
+          width: 50%;
+        }
+      }
+      &-text {
+        width: 55%;
+        @include respond("lg") {
+          width: 45%;
+        }
+      }
+    }
+    @include respond("lg") {
+      padding: 0;
+    }
   }
   &_bulletPoints {
     padding: 0 10%;
     letter-spacing: 1.6pt;
     margin: 0 auto;
+    margin-bottom: 2rem;
+    @include respond("xs") {
+      padding: 0 17%;
+    }
+    @include respond("sm") {
+      padding: 0 26%;
+    }
+
+    @include respond("lg") {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 60%;
+      padding: 0;
+    }
+
     & > * {
       text-indent: -1rem;
       padding-left: 1rem;
+      @media screen and(min-width: 1600px) {
+        padding-left: 5vw;
+      }
     }
   }
   &_image2 {
+    padding: 1.5rem 1rem;
+    margin: auto;
+    width: 100%;
+    @include respond("sm") {
+      padding: 2.5rem 2rem;
+      width: 80%;
+      align-self: center;
+    }
+    @include respond("md") {
+      padding: 2.5rem 2rem;
+      width: 60%;
+      align-self: center;
+    }
+    @include respond("lg") {
+      width: 70%;
+    }
+    &-clever {
+      display: flex;
+      flex-direction: column;
+      background-color: var(--primary);
+    }
+    &-hearts {
+      background-color: #c8d7d2;
+    }
+    &-netflix {
+      background-color: #fe0000;
+      @include respond("xs") {
+        padding: 2rem 2rem;
+      }
+      @include respond("lg") {
+        width: 55%;
+      }
+    }
+    &-clever {
+      background-color: var(--primary);
+    }
+    &-clever {
+      background-color: var(--primary);
+    }
+
     & > * {
-      padding: 2rem;
+      overflow: hidden;
+      max-height: 60vh;
+
+      @include respond("sm") {
+        max-height: 70vh;
+      }
+    }
+  }
+  &_image3 {
+    @include respond("md") {
+      width: 100%;
     }
   }
   &_border {
     &-clever {
-      background-color: var(--primary);
+      &-image {
+        background-image: url("../../../../../images/Desktop/Clever\ Overlay/Clever - mobile entire page screenshot (for animation).jpg");
+        background-size: 100%;
+      }
       &-2 {
         background-color: #294978;
         padding: 35px 18px;
+        @include respond("md") {
+          padding: 3rem 4rem;
+        }
+        @include respond("lg") {
+          padding: 5rem 6rem;
+        }
+        @include respond("xl") {
+          ppadding: 4rem 5rem;
+        }
       }
     }
     &-hearts {
-      background-color: #c8d7d2;
+      &-image {
+        background-image: url("../../../../../images/Desktop/HMO\ Overlay/hmo_mobileweb screenshot (animation).jpg");
+        background-size: 100%;
+      }
       &-2 {
-        background-color: #e5a9b0;
         padding: 35px 18px;
+        @include respond("lg") {
+          padding: 4rem 3.5rem;
+        }
+        @include respond("xl") {
+          padding: 5remrem 4rem;
+        }
       }
     }
     &-netflix {
-      background-color: #fe0000;
+      height: 65vh;
+      max-height: 65vh;
+      background-color: var(--teritary);
+      padding: 2rem 1rem;
+      @include respond("xs") {
+        height: 75vh;
+        max-height: 75vh;
+      }
+
+      &-image {
+        background-image: url("../../../../../images/Desktop/Netflix/netflix_mobileweb screenshot (animation).jpg");
+        background-size: 100%;
+      }
+      &-2 {
+        background-color: var(--teritary);
+
+        @include respond("lg") {
+          padding: 4rem 3.5rem;
+        }
+        @include respond("xl") {
+          padding: 5remrem 4rem;
+        }
+      }
+    }
+    &-foodieDiary {
+      background-color: var(--teritary);
+      &-image {
+        background-image: url("../../../../../images/Desktop/Clever\ Overlay/Clever - mobile entire page screenshot (for animation).jpg");
+        background-size: 100%;
+      }
+      @include respond("md") {
+        padding: 3rem 3.25rem;
+      }
+      @include respond("lg") {
+        padding: 2rem 1.25rem;
+      }
+      @include respond("xl") {
+        padding: 3rem 1.5rem;
+      }
+      &-blue {
+        padding: 1.75rem 1.5rem;
+        background-color: var(--primary);
+        @include respond("md") {
+          padding: 3rem 3.25rem;
+        }
+        @include respond("lg") {
+          padding: 2rem 1.25rem;
+        }
+        @include respond("xl") {
+          padding: 3rem 1.5rem;
+        }
+      }
+      &-black {
+        padding: 1.25rem 2.25rem;
+        background-color: var(--teritary);
+        @include respond("md") {
+          padding: 2.25rem 3.25rem;
+        }
+        @include respond("lg") {
+          padding: 4rem 5rem;
+        }
+        @include respond("xl") {
+          padding: 5rem 6rem;
+        }
+      }
     }
   }
   &_animation-ltr {

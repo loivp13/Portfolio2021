@@ -1,6 +1,23 @@
+.AutoRow {
+  &-Lg {
+    display: flex;
+    flex-direction: column;
+    @include respond("lg") {
+      flex-direction: row;
+    }
+  }
+}
 .boxShadow {
   &-light {
-    box-shadow: 1px 1px 12px #2a4e4b4f;
+    box-shadow: 3px 3px 6px #00000014;
+  }
+  &-medium {
+    box-shadow: 10px 10px 15px #7474744d;
+  }
+}
+.bg {
+  &-primary {
+    background-color: var(--primary);
   }
 }
 .d-none {
@@ -35,5 +52,11 @@
     &-right {
       text-align: right;
     }
+  }
+}
+
+.zIndex {
+  &-1 {
+    z-index: 1;
   }
 }

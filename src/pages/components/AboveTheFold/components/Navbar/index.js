@@ -62,21 +62,44 @@ export default function Navbar({ isMenuOpen }) {
         <div className="Navbar-menu-item h1-mont">about</div>
         <div className="Navbar-menu-item h1-mont">work</div>
         <div className="Navbar-menu-items">
-          <Image
-            fluid={ImageQuery.github.childImageSharp.fluid}
-            className="Navbar-menu-icon"
-            alt=""
-          />
-          <Image
-            fluid={ImageQuery.linkedin.childImageSharp.fluid}
-            className="Navbar-menu-icon"
-            alt=""
-          />
-          <Image
-            fluid={ImageQuery.email.childImageSharp.fluid}
-            className="Navbar-menu-icon"
-            alt=""
-          />
+          <a
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://github.com/loivp13"
+            className=""
+          >
+            <Image
+              fluid={ImageQuery.github.childImageSharp.fluid}
+              className="Navbar-menu-icon"
+              alt=""
+            />
+          </a>
+          <a
+            rel="noopener noreferrer"
+            target="_blank"
+            href="https://www.linkedin.com/in/loivp13/"
+            className=""
+          >
+            {" "}
+            <Image
+              fluid={ImageQuery.linkedin.childImageSharp.fluid}
+              className="Navbar-menu-icon"
+              alt=""
+            />
+          </a>
+          <a
+            rel="noopener noreferrer"
+            target="_blank"
+            href="mailto:loivp13@gmail"
+            className=""
+          >
+            <Image
+              fluid={ImageQuery.email.childImageSharp.fluid}
+              className="Navbar-menu-icon"
+              alt=""
+              target="_blank"
+            />
+          </a>
         </div>
       </div>
     </div>

@@ -19,7 +19,7 @@ export default function WorkLargeScreen({
     {
       cleverAccountant: file(
         relativePath: {
-          eq: "images/hero images without shadow/web - clever acc overlay 1.png"
+          eq: "images/hero images without shadow/web - clever acc overlay desktop.png"
         }
       ) {
         childImageSharp {
@@ -29,7 +29,7 @@ export default function WorkLargeScreen({
         }
       }
       heartsInMyOven: file(
-        relativePath: { eq: "images/hero images without shadow/hmoblog2.png" }
+        relativePath: { eq: "images/hero images without shadow/hmoblog2_1.png" }
       ) {
         childImageSharp {
           fluid(quality: 100) {
@@ -121,6 +121,7 @@ export default function WorkLargeScreen({
         handleShowOverlayClick={handleShowOverlayClick}
         overlayId={2}
       ></CardLargeScreen>
+
       <div className="WorkLargeScreen_showMore">
         <CardLargeScreen
           infoArrow={ImageQuery.infoArrow}
@@ -132,6 +133,7 @@ export default function WorkLargeScreen({
           overlayId={0}
         ></CardLargeScreen>
         <CardLargeScreen
+          forkedLines={<div className="WorkLargeScreen_forkedLines"></div>}
           infoArrow={ImageQuery.infoArrow}
           title={"Game Deals"}
           description={

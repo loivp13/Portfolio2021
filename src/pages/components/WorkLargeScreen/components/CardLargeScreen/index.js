@@ -10,9 +10,11 @@ export default function CardLargeScreen({
   handleShowOverlayClick,
   overlayId,
   infoArrow,
+  forkedLines,
 }) {
   return (
     <div className="CardLargeScreen">
+      {forkedLines && forkedLines}
       <div className="CardLargeScreen_container">
         <div
           className={`CardLargeScreen_container-left ${

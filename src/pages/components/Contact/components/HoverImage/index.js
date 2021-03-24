@@ -22,21 +22,20 @@ export default function HoverImage({ hoverImage, image }) {
     <>
       {/* display none on hover */}
       <div
+        onMouseLeave={handleImageMouseLeave}
         onMouseEnter={handleImageMouseEnter}
-        className={`Contact_images-wrapper ${isHoverState ? "d-none" : ""}`}
+        className={`Contact_images-wrapper`}
       >
         <Image
-          className="Contact_images-github"
+          className={`"Contact_images-github ${
+            isHoverState ? "opacity-none" : "zIndex-19"
+          }"`}
           fluid={image.childImageSharp.fluid}
         ></Image>
-      </div>
-      {/* display on hover */}
-      <div
-        onMouseLeave={handleImageMouseLeave}
-        className={`Contact_images-wrapper ${isHoverState ? "" : "d-none"} `}
-      >
         <Image
-          className="Contact_images-github"
+          className={`"Contact_images-github" ${
+            isHoverState ? "zIndex-1" : "opacity-none"
+          }`}
           fluid={hoverImage.childImageSharp.fluid}
         ></Image>
       </div>

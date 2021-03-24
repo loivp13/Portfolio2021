@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import OverlayItem from "./components/OverlayItem";
 import { useStaticQuery, graphql } from "gatsby";
-
+import { useMediaQuery } from "react-responsive";
 import anime from "animejs/lib/anime.es.js";
-
-import "../Overlay/components/OverlayItem/_index.scss";
 
 export default function Overlay2({
   currentOverlay2,
@@ -79,6 +77,10 @@ export default function Overlay2({
     top: 0,
   });
 
+  const isDesktop = useMediaQuery({
+    query: "(min-device-width: 1200px)",
+  });
+
   const { top } = state;
   const handleWindowScroll = (e) => {
     var h = Math.max(
@@ -130,8 +132,28 @@ export default function Overlay2({
   let overlay = useRef();
 
   //Handle Mounting and unmoutning animation
+  //Handle Mounting and unmoutning animation
+  let overlayElement = useRef(null);
+  let overlayItemNavElement = useRef(null);
+
+  const checkIfOverlayHasScrolled = () => {
+    if (isDesktop && overlayElement.current.scrollTop > 0) {
+      overlayItemNavElement.current.style.top = `${overlayElement.current.scrollTop}px`;
+    } else {
+      overlayItemNavElement.current.style.top = 0;
+    }
+  };
 
   useEffect(() => {
+    overlayElement.current = document.querySelector(".Overlay");
+
+    overlayItemNavElement.current = document.querySelector(
+      ".OverlayItem-main .OverlayItem_Navbar"
+    );
+    overlayElement.current.addEventListener(
+      "scroll",
+      checkIfOverlayHasScrolled
+    );
     handleWindowScroll();
     window.addEventListener("scroll", handleWindowScroll);
     overlay.current = document.querySelector(".Overlay");

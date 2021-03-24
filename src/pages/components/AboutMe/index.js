@@ -16,7 +16,7 @@ export default function AboutMe() {
     }
   `);
   return (
-    <div className="AboutMe">
+    <div id="about" className="AboutMe">
       <div className="AboutMe_title h3">About Me</div>
       <div className="AboutMe_header">
         <div className="AboutMe_header-caption h4">Hello There!</div>
@@ -31,11 +31,12 @@ export default function AboutMe() {
         <p>
           My name is <span className="text-bold"> Loi Pham</span> and I have
           been doing
-          <span className="text-bold"> web development since 2017</span> .
+          <span className="text-bold"> web development since 2017</span>.
         </p>
         <p>
           I specialize in <span className="text-bold">React</span> and its
           ecosystem for the <span className="text-bold">Front End</span> and
+          <span className="text-bold">NodeJS</span> for the
           <span className="text-bold"> Back End</span>.
         </p>
         <p>

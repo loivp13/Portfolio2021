@@ -12,6 +12,9 @@
   }
   @include respond("sm") {
   }
+  @include respond("md") {
+    height: 55vh;
+  }
   @include respond("xl") {
     height: 90vh;
   }
@@ -68,6 +71,9 @@
       color: var(--primary-light);
       font-size: calc(12px + 9vw);
       opacity: 1;
+      @include respond("lg") {
+        font-size: calc(8px + 7vw);
+      }
     }
   }
 }

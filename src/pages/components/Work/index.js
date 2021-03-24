@@ -41,7 +41,7 @@ export default function Work({
       }
       netflix: file(
         relativePath: {
-          eq: "images/Mobile/more sizes/clever card image-1@3x.png"
+          eq: "images/Mobile/more sizes/clever card image-1@2x.png"
         }
       ) {
         childImageSharp {
@@ -52,7 +52,7 @@ export default function Work({
       }
       foodieDiary: file(
         relativePath: {
-          eq: "images/Mobile/more sizes/clever card image-2@3x.png"
+          eq: "images/Mobile/more sizes/clever card image-2@2x.png"
         }
       ) {
         childImageSharp {
@@ -63,7 +63,7 @@ export default function Work({
       }
       gameDeals: file(
         relativePath: {
-          eq: "images/Mobile/more sizes/clever card image-3@3x.png"
+          eq: "images/Mobile/more sizes/clever card image-3@2x.png"
         }
       ) {
         childImageSharp {
@@ -74,7 +74,7 @@ export default function Work({
       }
       gameApp: file(
         relativePath: {
-          eq: "images/Mobile/more sizes/clever card image-4@3x.png"
+          eq: "images/Mobile/more sizes/clever card image-4@2x.png"
         }
       ) {
         childImageSharp {

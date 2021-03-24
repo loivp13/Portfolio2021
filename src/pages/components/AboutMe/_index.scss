@@ -4,9 +4,31 @@
   color: #ffffff;
   margin: 1rem;
   border-radius: 15px;
+  position: relative;
+  @include respond("xs") {
+    padding: 6%;
+  }
+  @include respond("sm") {
+    padding: 4% 8%;
+  }
+  @include respond("md") {
+    padding: 5% 10%;
+    width: 100%;
+    border-radius: 0;
+    margin: 0;
+    margin-bottom: 2rem;
+  }
+  @include respond("xl") {
+    padding: 5% 20%;
+    margin-bottom: 0;
+  }
 
   &_title {
     text-align: center;
+    margin-bottom: 2rem;
+    @include respond("xl") {
+      margin-bottom: 4rem;
+    }
   }
   &_header {
     display: flex;
@@ -18,11 +40,42 @@
       margin-left: auto;
       width: 70px;
       height: auto;
+      @include respond("md") {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-12vw, 10vw);
+        width: 120px;
+      }
+      @include respond("md") {
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-12vw, 10vw);
+        width: 120px;
+      }
+      @include respond("xl") {
+        transform: translate(-12vw, -50%);
+        width: 249px;
+        top: 50%;
+      }
     }
   }
   &_main {
     p:not(:last-child) {
       margin-bottom: 1rem;
+    }
+    @include respond("sm") {
+      font-size: 14pt;
+    }
+    @include respond("md") {
+      width: 80%;
+    }
+    @include respond("lg") {
+      font-size: 16pt;
+    }
+    @include respond("lg") {
+      font-size: 20pt;
     }
   }
 }

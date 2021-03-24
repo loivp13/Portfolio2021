@@ -60,21 +60,44 @@ export default function Contact() {
   `);
 
   return (
-    <div className="Contact">
+    <div id="contact" className="Contact">
       <div className="Contact_title h3">contact</div>
       <div className="Contact_images">
-        <HoverImage
-          hoverImage={ImageQuery.githubHover}
-          image={ImageQuery.github}
-        ></HoverImage>
-        <HoverImage
-          hoverImage={ImageQuery.linkedHover}
-          image={ImageQuery.linked}
-        ></HoverImage>
-        <HoverImage
-          hoverImage={ImageQuery.emailHover}
-          image={ImageQuery.email}
-        ></HoverImage>
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://github.com/loivp13"
+          className=""
+        >
+          <HoverImage
+            hoverImage={ImageQuery.githubHover}
+            image={ImageQuery.github}
+          ></HoverImage>
+        </a>
+
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://www.linkedin.com/in/loivp13/"
+          className=""
+        >
+          <HoverImage
+            hoverImage={ImageQuery.linkedHover}
+            image={ImageQuery.linked}
+          ></HoverImage>
+        </a>
+
+        <a
+          rel="noopener noreferrer"
+          target="_blank"
+          href="mailto:loivp13@gmail"
+          className=""
+        >
+          <HoverImage
+            hoverImage={ImageQuery.emailHover}
+            image={ImageQuery.email}
+          ></HoverImage>
+        </a>
       </div>
     </div>
   );

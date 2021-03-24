@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import OverlayItem from "./components/OverlayItem";
 import { useStaticQuery, graphql } from "gatsby";
-
+import { useMediaQuery } from "react-responsive";
 import anime from "animejs/lib/anime.es.js";
 
 import "./_index.scss";
@@ -15,18 +15,18 @@ export default function Overlay({
     {
       CleverDesktop: file(
         relativePath: {
-          eq: "images/hero images without shadow/web - clever acc overlay 1.png"
+          eq: "images/hero images without shadow/web - clever acc overlay desktop.png"
         }
       ) {
         childImageSharp {
-          fluid(quality: 100) {
+          fluid(quality: 100, maxWidth: 1534) {
             ...GatsbyImageSharpFluid
           }
         }
       }
       CleverMobile: file(
         relativePath: {
-          eq: "images/Desktop/Clever Overlay/clever mobile screenshot.jpg"
+          eq: "images/Desktop/Clever Overlay/Clever - mobile entire page screenshot (for animation).jpg"
         }
       ) {
         childImageSharp {
@@ -50,7 +50,7 @@ export default function Overlay({
         relativePath: { eq: "images/hero images without shadow/hmoblog2.png" }
       ) {
         childImageSharp {
-          fluid(quality: 100) {
+          fluid(quality: 100, maxWidth: 1534) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -68,7 +68,7 @@ export default function Overlay({
         relativePath: { eq: "images/Desktop/HMO Overlay/Mask Group 6.jpg" }
       ) {
         childImageSharp {
-          fluid(quality: 100) {
+          fluid(quality: 100, maxHeight: 1475) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -77,7 +77,7 @@ export default function Overlay({
         relativePath: { eq: "images/hero images without shadow/netflix.png" }
       ) {
         childImageSharp {
-          fluid(quality: 100) {
+          fluid(quality: 100, maxWidth: 1534) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -97,17 +97,20 @@ export default function Overlay({
         }
       ) {
         childImageSharp {
-          fluid(quality: 100) {
+          fluid(quality: 100, maxHeight: 1581) {
             ...GatsbyImageSharpFluid
           }
         }
       }
     }
   `);
+
   const [state, setState] = useState({
     top: 0,
   });
-
+  const isDesktop = useMediaQuery({
+    query: "(min-device-width: 1200px)",
+  });
   const { top } = state;
 
   const handleWindowScroll = (e) => {
@@ -160,11 +163,32 @@ export default function Overlay({
   let overlay = useRef();
 
   //Handle Mounting and unmoutning animation
+  let overlayElement = useRef(null);
+  let overlayItemNavElement = useRef(null);
+
+  const checkIfOverlayHasScrolled = () => {
+    if (isDesktop && overlayElement.current.scrollTop > 0) {
+      overlayItemNavElement.current.style.top = `${overlayElement.current.scrollTop}px`;
+    } else {
+      overlayItemNavElement.current.style.top = 0;
+    }
+  };
 
   useEffect(() => {
+    overlayElement.current = document.querySelector(".Overlay");
+
+    overlayItemNavElement.current = document.querySelector(
+      ".OverlayItem-main .OverlayItem_Navbar"
+    );
+    overlayElement.current.addEventListener(
+      "scroll",
+      checkIfOverlayHasScrolled
+    );
+
     handleWindowScroll();
     overlay.current = document.querySelector(".Overlay");
     window.addEventListener("scroll", handleWindowScroll);
+    window.addEventListener("resize", handleWindowScroll);
     animationRefLtR.current = anime({
       targets: ".OverlayItem_animation-ltr",
       translateX: `100vw`,
@@ -222,8 +246,13 @@ export default function Overlay({
     });
     return () => {
       window.removeEventListener("scroll", handleWindowScroll);
+      window.removeEventListener("resize", handleWindowScroll);
+      overlayItemNavElement.current.removeEventListener(
+        "scroll",
+        checkIfOverlayHasScrolled
+      );
     };
-  }, [currentOverlay]);
+  }, [currentOverlay, isDesktop]);
 
   const renderOverlay = () => {
     switch (currentOverlay) {
@@ -231,6 +260,7 @@ export default function Overlay({
         return (
           <>
             <OverlayItem
+              currentOverlay={currentOverlay}
               animationRefLtR={animationRefLtR}
               animationRefLtR2={animationRefLtR2}
               animationRefRtL={animationRefRtL}
@@ -253,6 +283,7 @@ export default function Overlay({
               link="https://thecleveraccountants.com/"
             ></OverlayItem>
             <OverlayItem
+              currentOverlay={currentOverlay}
               animationRefLtR={animationRefLtR}
               animationRefLtR2={animationRefLtR2}
               animationRefRtL={animationRefRtL}
@@ -282,6 +313,7 @@ export default function Overlay({
         return (
           <>
             <OverlayItem
+              currentOverlay={currentOverlay}
               animationRefLtR={animationRefLtR}
               animationRefLtR2={animationRefLtR2}
               animationRefRtL={animationRefRtL}
@@ -328,6 +360,7 @@ export default function Overlay({
               link={"https://heartsinmyoven.com/"}
             ></OverlayItem>
             <OverlayItem
+              currentOverlay={currentOverlay}
               animationRefLtR={animationRefLtR}
               animationRefLtR2={animationRefLtR2}
               animationRefRtL={animationRefRtL}
@@ -357,6 +390,7 @@ export default function Overlay({
         return (
           <>
             <OverlayItem
+              currentOverlay={currentOverlay}
               animationRefLtR={animationRefLtR}
               animationRefLtR2={animationRefLtR2}
               animationRefRtL={animationRefRtL}
@@ -381,6 +415,7 @@ export default function Overlay({
               link={"https://heartsinmyoven.com/"}
             ></OverlayItem>
             <OverlayItem
+              currentOverlay={currentOverlay}
               animationRefLtR={animationRefLtR}
               animationRefLtR2={animationRefLtR2}
               animationRefRtL={animationRefRtL}

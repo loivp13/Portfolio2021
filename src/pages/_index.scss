@@ -21,6 +21,9 @@ html {
 .Home {
   background-color: #2a4e4b1f;
   position: relative;
+  @include respond("md") {
+    background-color: white;
+  }
 }
 *:focus {
   outline: var(--primary-light) auto 1px;

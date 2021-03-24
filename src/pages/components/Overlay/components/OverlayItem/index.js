@@ -1,8 +1,12 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import anime from "animejs/lib/anime.es.js";
+import StrangerThingsGif from "../../../Global/StrangerThingsGif";
 
+import { useMediaQuery } from "react-responsive";
+import ButtonHoverLg from "../../../Global/Buttons/ButtonHoverLg";
 import Image from "gatsby-image";
+
 import "./_index.scss";
 
 export default function OverlayItem({
@@ -21,6 +25,7 @@ export default function OverlayItem({
   animationRefRtL,
   animationRefLtR,
   animationRefLtR2,
+  currentOverlay,
 }) {
   const ImageQuery = useStaticQuery(graphql`
     {
@@ -57,10 +62,77 @@ export default function OverlayItem({
           }
         }
       }
+      leftPointerLg: file(
+        relativePath: {
+          eq: "images/Desktop/BUTTON (Overlay) - left arrow (prev).png"
+        }
+      ) {
+        childImageSharp {
+          fluid(quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      rightPointerLg: file(
+        relativePath: {
+          eq: "images/Desktop/BUTTON (Overlay) - right arrow (next).png"
+        }
+      ) {
+        childImageSharp {
+          fluid(quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      XLg: file(
+        relativePath: { eq: "images/Desktop/BUTTON (Overlay) - X (Close).png" }
+      ) {
+        childImageSharp {
+          fluid(quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      leftPointerLgHover: file(
+        relativePath: {
+          eq: "images/Desktop/BUTTON (Overlay) - left arrow (prev) (Hover State) - Copy.png"
+        }
+      ) {
+        childImageSharp {
+          fluid(quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      rightPointerLgHover: file(
+        relativePath: {
+          eq: "images/Desktop/BUTTON (Overlay) - right arrow (next) (Hover State).png"
+        }
+      ) {
+        childImageSharp {
+          fluid(quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+      XLgHover: file(
+        relativePath: {
+          eq: "images/Desktop/BUTTON (Overlay) - X (Close) (Hover State).png"
+        }
+      ) {
+        childImageSharp {
+          fluid(quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
     }
   `);
+  const isDesktop = useMediaQuery({
+    query: "(min-device-width: 1200px)",
+  });
 
-  const renderBorderClass = () => {
+  const getCurrentOverlay = () => {
     switch (overlayId) {
       case 0:
         return "clever";
@@ -70,7 +142,96 @@ export default function OverlayItem({
         return "netflix";
     }
   };
+  const [state, setState] = useState({
+    isCloseButtonHover: false,
+    isPrevButtonHover: false,
+    isNextButtonHover: false,
+    forceRerender: false,
+  });
 
+  const {
+    isCloseButtonHover,
+    isPrevButtonHover,
+    isNextButtonHover,
+    forceRerender,
+  } = state;
+  const toggleRender = () => {
+    setState({
+      ...state,
+      forceRerender: !forceRerender,
+    });
+  };
+  const slideElement = useRef(null);
+  useEffect(() => {
+    //Image Animation
+    window.addEventListener("resize", toggleRender);
+    slideElement.current = document.querySelector(
+      `.OverlayItem_border-${getCurrentOverlay()}-image`
+    );
+
+    if (slideElement.current) {
+      let imageWidth = slideElement.current.offsetWidth;
+      let ratio;
+      switch (getCurrentOverlay()) {
+        case "clever":
+          ratio = 9052 / 972;
+          break;
+        case "hearts":
+          ratio = 4103 / 972;
+          break;
+        case "netflix":
+          ratio = 6175 / 972;
+          break;
+      }
+      let height = imageWidth * ratio;
+      slideElement.current.style.height = `${height}px`;
+      slideElement.current.style.backgroundSize = `100% ${height}px`;
+
+      anime({
+        targets: `.OverlayItem_border-${getCurrentOverlay()}-image`,
+        keyframes: [
+          { backgroundPosition: `0 -${height * 0}px` },
+          { backgroundPosition: `0 -${height * 0.33333}px`, delay: 1000 },
+          { backgroundPosition: `0 -${height * 0.66666}px`, delay: 1000 },
+          { backgroundPosition: `0 -${height * 0.99999}px`, delay: 1000 },
+        ],
+
+        duration: "2000",
+        loop: true,
+        easing: "linear",
+      });
+    }
+  }, [isDesktop, currentOverlay]);
+
+  //if(overlay element has been scrolled make nav sticky)
+
+  const handleOnMouseEnterButtonsHover = (btn) => {
+    switch (btn) {
+      case "close":
+        setState({
+          isCloseButtonHover: !isCloseButtonHover,
+          isPrevButtonHover: false,
+          isNextButtonHover: false,
+        });
+        break;
+      case "prev":
+        setState({
+          isCloseButtonHover: false,
+          isPrevButtonHover: !isPrevButtonHover,
+          isNextButtonHover: false,
+        });
+        break;
+      case "next":
+        setState({
+          isCloseButtonHover: false,
+          isPrevButtonHover: false,
+          isNextButtonHover: !isNextButtonHover,
+        });
+        break;
+      default:
+        break;
+    }
+  };
   const handleDelayUnmountingClick = (direction) => {
     if (direction === "ltr") {
       animationRefLtR.current.play();
@@ -112,31 +273,83 @@ export default function OverlayItem({
                 handleDelayUnmountingClick("ltr2");
               }
             }}
-            className="OverlayItem_button"
+            className={`OverlayItem_button ${
+              isPrevButtonHover && "bg-primary"
+            }`}
+            onMouseEnter={() => {
+              handleOnMouseEnterButtonsHover("prev");
+            }}
+            onMouseLeave={() => {
+              handleOnMouseEnterButtonsHover("prev");
+            }}
           >
-            <Image fluid={ImageQuery.leftPointer.childImageSharp.fluid}></Image>
+            {isDesktop ? (
+              <ButtonHoverLg
+                isHover={isPrevButtonHover}
+                image={ImageQuery.leftPointerLg}
+                imageHover={ImageQuery.leftPointerLgHover}
+              ></ButtonHoverLg>
+            ) : (
+              <Image
+                fluid={ImageQuery.leftPointer.childImageSharp.fluid}
+              ></Image>
+            )}
           </div>
           {/* next button */}
           <div
             onClick={() => {
               handleDelayUnmountingClick("rtl");
             }}
-            className="OverlayItem_button"
+            className={`OverlayItem_button ${
+              isNextButtonHover && "bg-primary"
+            }`}
+            onMouseEnter={() => {
+              handleOnMouseEnterButtonsHover("next");
+            }}
+            onMouseLeave={() => {
+              handleOnMouseEnterButtonsHover("next");
+            }}
           >
-            <Image
-              fluid={ImageQuery.rightPointer.childImageSharp.fluid}
-            ></Image>
+            {isDesktop ? (
+              <ButtonHoverLg
+                isHover={isNextButtonHover}
+                image={ImageQuery.rightPointerLg}
+                imageHover={ImageQuery.rightPointerLgHover}
+              ></ButtonHoverLg>
+            ) : (
+              <Image
+                fluid={ImageQuery.rightPointer.childImageSharp.fluid}
+              ></Image>
+            )}
           </div>
         </div>
         {/* close button */}
-        <div className="OverlayItem_close">
+        <div
+          onMouseEnter={() => {
+            handleOnMouseEnterButtonsHover("close");
+          }}
+          onMouseLeave={() => {
+            handleOnMouseEnterButtonsHover("close");
+          }}
+          className="OverlayItem_close"
+        >
           <div
             onClick={() => {
               handleClosingClick();
             }}
-            className="OverlayItem_button"
+            className={`OverlayItem_button ${
+              isCloseButtonHover && "bg-primary"
+            }`}
           >
-            <Image fluid={ImageQuery.X.childImageSharp.fluid}></Image>
+            {isDesktop ? (
+              <ButtonHoverLg
+                isHover={isCloseButtonHover}
+                image={ImageQuery.XLg}
+                imageHover={ImageQuery.XLgHover}
+              ></ButtonHoverLg>
+            ) : (
+              <Image fluid={ImageQuery.X.childImageSharp.fluid}></Image>
+            )}
           </div>
         </div>
       </div>
@@ -150,26 +363,42 @@ export default function OverlayItem({
             </button>
           </a>
         </div>
-        <div className="OverlayItem_excerpt p">{excerpt}</div>
-        <div className="OverlayItem_image1">
+        <div className="OverlayItem_excerpt p">
+          <div className="OverlayItem_excerpt-text">{excerpt}</div>
+        </div>
+
+        <div className="OverlayItem_image1 boxShadow-medium">
           {image1 && <Image fluid={image1.childImageSharp.fluid}></Image>}
         </div>
-        <div className="OverlayItem_bulletPoints h3">
-          {bulletPoints.split("•").map((e, i) => {
-            return (
-              <div key={i} className="h4">
-                • {e}
-              </div>
-            );
-          })}
-        </div>
-        <div className="OverlayItem_image2">
-          <div className={`OverlayItem_border-${renderBorderClass()}`}>
-            {image2 && <Image fluid={image2.childImageSharp.fluid}></Image>}
+
+        <div className="AutoRow-Lg">
+          <div className="OverlayItem_bulletPoints h3">
+            {bulletPoints.split("•").map((e, i) => {
+              return (
+                <div key={i} className="h4">
+                  • {e}
+                </div>
+              );
+            })}
+          </div>
+          <div
+            className={`OverlayItem_image2 OverlayItem_image2-${getCurrentOverlay()} boxShadow-medium`}
+          >
+            <div className={`OverlayItem_border-${getCurrentOverlay()}`}>
+              {/* {image2 && <Image fluid={image2.childImageSharp.fluid}></Image>} */}
+              {getCurrentOverlay() === "netflix" ? (
+                <StrangerThingsGif></StrangerThingsGif>
+              ) : (
+                <div
+                  className={`OverlayItem_border-${getCurrentOverlay()}-image`}
+                ></div>
+              )}
+            </div>
           </div>
         </div>
-        <div className="OverlayItem_image3">
-          <div className={`OverlayItem_border-${renderBorderClass()}-2`}>
+
+        <div className="OverlayItem_image3 boxShadow-medium">
+          <div className={`OverlayItem_border-${getCurrentOverlay()}-2`}>
             {image3 && <Image fluid={image3.childImageSharp.fluid}></Image>}
           </div>
         </div>
