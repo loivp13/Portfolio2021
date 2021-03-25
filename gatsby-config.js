@@ -6,6 +6,7 @@ module.exports = {
     description:
       "Loi is a web developer since 2018. He specializes in React and it's ecosystem. Complimented with his experience with backend technologies he's able to build beautiful and responsive websites.",
     copyright: "Loi Van Pham",
+    siteUrl: "https://www.loivanpham.com",
   },
   plugins: [
     {

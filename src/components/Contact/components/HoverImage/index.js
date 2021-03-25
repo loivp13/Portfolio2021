@@ -28,7 +28,7 @@ export default function HoverImage({ hoverImage, image }) {
       >
         <Image
           className={`"Contact_images-github ${
-            isHoverState ? "opacity-none" : "zIndex-19"
+            isHoverState ? "opacity-none" : "zIndex-1"
           }"`}
           fluid={image.childImageSharp.fluid}
         ></Image>

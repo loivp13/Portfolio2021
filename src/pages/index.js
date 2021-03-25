@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 
 import Seo from "./Seo";
-import Footer from "./components/Footer";
-import Overlay from "./components/Overlay";
-import Overlay2 from "./components/Overlay2";
-import AboveTheFold from "./components/AboveTheFold";
-import Work from "./components/Work";
-import WorkLargeScreen from "./components/WorkLargeScreen";
-import AboutMe from "./components/AboutMe";
-import Contact from "./components/Contact";
+import Footer from "../components/Footer";
+import Overlay from "../components/Overlay";
+import Overlay2 from "../components/Overlay2";
+import AboveTheFold from "../components/AboveTheFold";
+import Work from "../components/Work";
+import WorkLargeScreen from "../components/WorkLargeScreen";
+import AboutMe from "../components/AboutMe";
+import Contact from "../components/Contact";
 
 import { useMediaQuery } from "react-responsive";
 

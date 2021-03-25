@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Image from "gatsby-image";
+import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import HoverImage from "./components/HoverImage";
 
