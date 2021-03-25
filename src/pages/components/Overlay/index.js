@@ -109,40 +109,44 @@ export default function Overlay({
     top: 0,
   });
   const isDesktop = useMediaQuery({
-    query: "(min-device-width: 1200px)",
+    query: "(min-width: 1200px)",
   });
   const { top } = state;
 
   const handleWindowScroll = (e) => {
-    var h = Math.max(
-      document.documentElement.clientHeight,
-      window.innerHeight || 0
-    );
-    let supportPageOffset = window.pageXOffset !== undefined;
-    let isCSS1Compat = (document.compatMode || "") === "CSS1Compat";
-    let x = supportPageOffset
-      ? window.pageXOffset
-      : isCSS1Compat
-      ? document.documentElement.scrollLeft
-      : document.body.scrollLeft;
-    let y = supportPageOffset
-      ? window.pageYOffset
-      : isCSS1Compat
-      ? document.documentElement.scrollTop
-      : document.body.scrollTop;
-    setState({
-      ...state,
-      top: y + h,
-    });
+    if (typeof window !== "undefined") {
+      var h = Math.max(
+        document.documentElement.clientHeight,
+        window.innerHeight || 0
+      );
+      let supportPageOffset = window.pageXOffset !== undefined;
+      let isCSS1Compat = (document.compatMode || "") === "CSS1Compat";
+      let x = supportPageOffset
+        ? window.pageXOffset
+        : isCSS1Compat
+        ? document.documentElement.scrollLeft
+        : document.body.scrollLeft;
+      let y = supportPageOffset
+        ? window.pageYOffset
+        : isCSS1Compat
+        ? document.documentElement.scrollTop
+        : document.body.scrollTop;
+      setState({
+        ...state,
+        top: y + h,
+      });
+    }
   };
 
-  const overlayAnimationOpen = anime({
-    targets: ".Overlay",
-    translateY: `-100vh`,
-    easing: "linear",
-    duration: 450,
-    autoplay: true,
-  });
+  if (typeof window !== "undefined") {
+    const overlayAnimationOpen = anime({
+      targets: ".Overlay",
+      translateY: `-100vh`,
+      easing: "linear",
+      duration: 450,
+      autoplay: true,
+    });
+  }
 
   const handleClosingClick = () => {
     anime({
@@ -168,13 +172,16 @@ export default function Overlay({
 
   const checkIfOverlayHasScrolled = () => {
     if (isDesktop && overlayElement.current.scrollTop > 0) {
-      overlayItemNavElement.current.style.top = `${overlayElement.current.scrollTop}px`;
+      overlayItemNavElement.current.style.transform = `translateY(${overlayElement.current.scrollTop}px)`;
     } else {
-      overlayItemNavElement.current.style.top = 0;
+      overlayItemNavElement.current.style.transform = `translateY(0px)`;
     }
   };
 
   useEffect(() => {
+    //hide body overflow when overlay is showing
+
+    document.querySelector("html").style.overflow = "hidden";
     overlayElement.current = document.querySelector(".Overlay");
 
     overlayItemNavElement.current = document.querySelector(
@@ -245,6 +252,9 @@ export default function Overlay({
       },
     });
     return () => {
+      //make body overflow normal once overlay closes
+      document.querySelector("html").style.overflow = "auto";
+
       window.removeEventListener("scroll", handleWindowScroll);
       window.removeEventListener("resize", handleWindowScroll);
       overlayItemNavElement.current.removeEventListener(

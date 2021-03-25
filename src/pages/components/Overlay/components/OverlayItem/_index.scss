@@ -95,7 +95,7 @@
     @include respond("lg") {
       padding: 0 10% 5% 10%;
     }
-    @include respond("xl") {
+    @include respond("xxl") {
       padding: 0 15% 5% 15%;
     }
   }
@@ -124,6 +124,9 @@
     font-size: 12px;
     @include respond("sm") {
       font-size: 18px;
+    }
+    &:hover {
+      background-color: var(--primary);
     }
   }
   &_link {
@@ -175,7 +178,7 @@
     margin: 0 auto;
     margin-bottom: 2rem;
     @include respond("xs") {
-      padding: 0 17%;
+      padding: 0 15%;
     }
     @include respond("sm") {
       padding: 0 26%;
@@ -185,8 +188,10 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: 60%;
+      width: 75%;
       padding: 0;
+    }
+    @include respond("xl") {
     }
 
     & > * {
@@ -194,6 +199,38 @@
       padding-left: 1rem;
       @media screen and(min-width: 1600px) {
         padding-left: 5vw;
+      }
+    }
+  }
+  &_image1 {
+    margin-left: 1rem;
+    & + div {
+      @include respond("lg") {
+        padding: 4rem;
+      }
+    }
+    &-gameDeals {
+      & > div:nth-child(1) {
+        @include respond("lg") {
+          width: 60%;
+        }
+      }
+      & > div:nth-child(2) {
+        @include respond("lg") {
+          width: 50%;
+        }
+      }
+    }
+    &-gameApp {
+      & > div:nth-child(1) {
+        @include respond("lg") {
+          width: 60%;
+        }
+      }
+      & > div:nth-child(2) {
+        @include respond("lg") {
+          width: 50%;
+        }
       }
     }
   }
@@ -212,7 +249,10 @@
       align-self: center;
     }
     @include respond("lg") {
-      width: 70%;
+      width: 90%;
+    }
+    @include respond("xl") {
+      width: 55%;
     }
     &-clever {
       display: flex;
@@ -227,13 +267,20 @@
       @include respond("xs") {
         padding: 2rem 2rem;
       }
-      @include respond("lg") {
+      @include respond("md") {
         width: 55%;
       }
+      @include respond("lg") {
+        width: 100%;
+      }
+      @include respond("xl") {
+        width: 50%;
+      }
     }
-    &-clever {
-      background-color: var(--primary);
+    &-foodieDiary {
+      background-color: var(--tertiary);
     }
+
     &-clever {
       background-color: var(--primary);
     }
@@ -278,6 +325,8 @@
         background-size: 100%;
       }
       &-2 {
+        background-color: #e6a5af;
+
         padding: 35px 18px;
         @include respond("lg") {
           padding: 4rem 3.5rem;
@@ -290,11 +339,16 @@
     &-netflix {
       height: 65vh;
       max-height: 65vh;
-      background-color: var(--teritary);
+      background-color: var(--tertiary);
       padding: 2rem 1rem;
       @include respond("xs") {
-        height: 75vh;
-        max-height: 75vh;
+        height: 55vh;
+      }
+      @include respond("lg") {
+        height: 55vh;
+      }
+      @include respond("xl") {
+        height: 65vh;
       }
 
       &-image {
@@ -302,7 +356,7 @@
         background-size: 100%;
       }
       &-2 {
-        background-color: var(--teritary);
+        background-color: var(--tertiary);
 
         @include respond("lg") {
           padding: 4rem 3.5rem;
@@ -313,7 +367,7 @@
       }
     }
     &-foodieDiary {
-      background-color: var(--teritary);
+      background-color: var(--tertiary);
       &-image {
         background-image: url("../../../../../images/Desktop/Clever\ Overlay/Clever - mobile entire page screenshot (for animation).jpg");
         background-size: 100%;
@@ -335,14 +389,30 @@
         }
         @include respond("lg") {
           padding: 2rem 1.25rem;
+          @include respond("lg") {
+            display: flex;
+            justify-content: space-around;
+          }
         }
         @include respond("xl") {
           padding: 3rem 1.5rem;
         }
+        & > div:nth-child(1) {
+          @include respond("lg") {
+            width: 55%;
+            padding: 2rem;
+          }
+        }
+        & > div:nth-child(2) {
+          @include respond("lg") {
+            width: 40%;
+            padding: 2rem;
+          }
+        }
       }
       &-black {
         padding: 1.25rem 2.25rem;
-        background-color: var(--teritary);
+        background-color: var(--tertiary);
         @include respond("md") {
           padding: 2.25rem 3.25rem;
         }

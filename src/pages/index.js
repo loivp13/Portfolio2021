@@ -70,14 +70,12 @@ const Home = () => {
       <AboveTheFold></AboveTheFold>
       {minTabletSize ? (
         <WorkLargeScreen
-          currentOverlay={currentOverlay}
           currentOverlay={currentOverlay2}
           handleShowOverlayClick={handleShowOverlayClick}
           handleShowOverlayClick2={handleShowOverlayClick2}
         ></WorkLargeScreen>
       ) : (
         <Work
-          currentOverlay={currentOverlay}
           currentOverlay={currentOverlay2}
           handleShowOverlayClick={handleShowOverlayClick}
           handleShowOverlayClick2={handleShowOverlayClick2}

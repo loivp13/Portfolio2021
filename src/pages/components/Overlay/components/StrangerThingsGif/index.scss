@@ -38,8 +38,8 @@
     }
   }
   &_foreground {
-    width: 48vw;
-    top: 8%;
+    width: 44vw;
+    top: 9%;
     position: relative;
     @include respond("xs") {
       top: 11%;
@@ -48,13 +48,19 @@
       width: 39vw;
     }
     @include respond("md") {
-      width: 27vw;
+      width: 25vw;
     }
     @include respond("lg") {
-      width: 18vw;
+      width: 35vw;
     }
     @include respond("xl") {
-      width: 17vw;
+      width: 14vw;
+    }
+    @media screen and(min-width: 1440px) {
+      width: 11vw;
+    }
+    @media screen and(min-width: 1535px) {
+      width: 12vw;
     }
     z-index: 1;
     & > video {

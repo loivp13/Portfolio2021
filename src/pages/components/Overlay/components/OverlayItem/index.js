@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import anime from "animejs/lib/anime.es.js";
-import StrangerThingsGif from "../../../Global/StrangerThingsGif";
+import StrangerThingsGif from "../StrangerThingsGif";
 
 import { useMediaQuery } from "react-responsive";
-import ButtonHoverLg from "../../../Global/Buttons/ButtonHoverLg";
+import ButtonHoverLg from "../ButtonHoverLg";
 import Image from "gatsby-image";
 
 import "./_index.scss";
@@ -129,7 +129,7 @@ export default function OverlayItem({
     }
   `);
   const isDesktop = useMediaQuery({
-    query: "(min-device-width: 1200px)",
+    query: "(min-width: 1200px)",
   });
 
   const getCurrentOverlay = () => {
@@ -163,6 +163,8 @@ export default function OverlayItem({
   };
   const slideElement = useRef(null);
   useEffect(() => {
+    //hide body overflow when overlay is showing
+    document.querySelector("html").style.overflow = "hidden";
     //Image Animation
     window.addEventListener("resize", toggleRender);
     slideElement.current = document.querySelector(
@@ -274,7 +276,7 @@ export default function OverlayItem({
               }
             }}
             className={`OverlayItem_button ${
-              isPrevButtonHover && "bg-primary"
+              isPrevButtonHover && "bg-primary-xl"
             }`}
             onMouseEnter={() => {
               handleOnMouseEnterButtonsHover("prev");
@@ -301,7 +303,7 @@ export default function OverlayItem({
               handleDelayUnmountingClick("rtl");
             }}
             className={`OverlayItem_button ${
-              isNextButtonHover && "bg-primary"
+              isNextButtonHover && "bg-primary-xl"
             }`}
             onMouseEnter={() => {
               handleOnMouseEnterButtonsHover("next");

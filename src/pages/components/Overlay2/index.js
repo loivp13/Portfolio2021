@@ -78,7 +78,7 @@ export default function Overlay2({
   });
 
   const isDesktop = useMediaQuery({
-    query: "(min-device-width: 1200px)",
+    query: "(min-width: 1200px)",
   });
 
   const { top } = state;
@@ -106,13 +106,15 @@ export default function Overlay2({
     });
   };
 
-  const overlayAnimationOpen = anime({
-    targets: ".Overlay",
-    translateY: `-100vh`,
-    easing: "linear",
-    duration: 450,
-    autoplay: true,
-  });
+  if (typeof window !== "undefined") {
+    const overlayAnimationOpen = anime({
+      targets: ".Overlay",
+      translateY: `-100vh`,
+      easing: "linear",
+      duration: 450,
+      autoplay: true,
+    });
+  }
 
   const handleClosingClick2 = () => {
     anime({
@@ -138,13 +140,15 @@ export default function Overlay2({
 
   const checkIfOverlayHasScrolled = () => {
     if (isDesktop && overlayElement.current.scrollTop > 0) {
-      overlayItemNavElement.current.style.top = `${overlayElement.current.scrollTop}px`;
+      overlayItemNavElement.current.style.transform = `translateY(${overlayElement.current.scrollTop}px)`;
     } else {
-      overlayItemNavElement.current.style.top = 0;
+      overlayItemNavElement.current.style.transform = `translateY(0px)`;
     }
   };
 
   useEffect(() => {
+    document.querySelector("html").style.overflow = "hidden";
+
     overlayElement.current = document.querySelector(".Overlay");
 
     overlayItemNavElement.current = document.querySelector(
@@ -207,6 +211,11 @@ export default function Overlay2({
       complete: function () {},
     });
     return () => {
+      document.querySelector("html").style.overflow = "auto";
+      overlayItemNavElement.current.removeEventListener(
+        "scroll",
+        checkIfOverlayHasScrolled
+      );
       window.removeEventListener("scroll", handleWindowScroll);
     };
   }, [currentOverlay2]);
@@ -262,6 +271,7 @@ export default function Overlay2({
               image1={ImageQuery.GameDealsDesktop}
               image2={null}
               image3={null}
+              image4={null}
               overlayId={1}
               link={"https://heartsinmyoven.com/"}
             ></OverlayItem>
@@ -291,6 +301,7 @@ export default function Overlay2({
               image1={ImageQuery.FoodieDiaryDesktop}
               image2={ImageQuery.FoodieDiaryMobile}
               image3={ImageQuery.FoodieDiaryPage}
+              image4={ImageQuery.FoodieDiaryPage2}
               overlayId={0}
               link="https://thecleveraccountants.com/"
             ></OverlayItem>
@@ -313,6 +324,9 @@ export default function Overlay2({
                 "Account creation • Mongodb • Listing feature • wishlist feature • Search Feature • Deployment"
               }
               image1={ImageQuery.GameDealsDesktop}
+              image2={null}
+              image3={null}
+              image4={null}
               overlayId={1}
               link={"https://heartsinmyoven.com/"}
             ></OverlayItem>
@@ -333,6 +347,9 @@ export default function Overlay2({
                 "Responsive design • Mobile Website • Tablet Website • Email system setup • Contact form setup • Deployment"
               }
               image1={ImageQuery.GameAppDesktop}
+              image2={null}
+              image3={null}
+              image4={null}
               overlayId={2}
               link={"https://netflix-react.herokuapp.com/"}
             ></OverlayItem>

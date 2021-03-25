@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import ButtonHoverLg from "../../../Global/Buttons/ButtonHoverLg";
+import ButtonHoverLg from "../ButtonHoverLg";
 import Image from "gatsby-image";
 import { useMediaQuery } from "react-responsive";
 
@@ -124,7 +124,7 @@ export default function OverlayItem2({
     }
   `);
   const isDesktop = useMediaQuery({
-    query: "(min-device-width: 1200px)",
+    query: "(min-width: 1200px)",
   });
 
   const renderBorderClass = () => {
@@ -225,7 +225,7 @@ export default function OverlayItem2({
               }
             }}
             className={`OverlayItem_button ${
-              isPrevButtonHover && "bg-primary"
+              isPrevButtonHover && "bg-primary-xl"
             }`}
             onMouseEnter={() => {
               handleOnMouseEnterButtonsHover("prev");
@@ -252,7 +252,7 @@ export default function OverlayItem2({
               handleDelayUnmountingClick("rtl");
             }}
             className={`OverlayItem_button ${
-              isNextButtonHover && "bg-primary"
+              isNextButtonHover && "bg-primary-xl"
             }`}
             onMouseEnter={() => {
               handleOnMouseEnterButtonsHover("next");
@@ -313,39 +313,77 @@ export default function OverlayItem2({
         <div className="OverlayItem_excerpt p">
           <div className="OverlayItem_excerpt-text">{excerpt}</div>
         </div>
-        <div className="OverlayItem_image1 boxShadow-medium">
-          {image1 && <Image fluid={image1.childImageSharp.fluid}></Image>}
-        </div>
-        <div className="OverlayItem_bulletPoints h3">
-          {bulletPoints.split("•").map((e, i) => {
-            return (
-              <div key={i} className="h4">
-                • {e}
-              </div>
-            );
-          })}
-        </div>
-        {image2 && (
-          <div className="OverlayItem_image2 boxShadow-medium">
-            <div className={`OverlayItem_border-${renderBorderClass()}`}>
-              <Image fluid={image2.childImageSharp.fluid}></Image>
+        {isDesktop && renderBorderClass() !== "foodieDiary" ? (
+          <div
+            className={`AutoRow-Lg OverlayItem_image1 OverlayItem_image1-${renderBorderClass()}`}
+          >
+            {image1 && <Image fluid={image1.childImageSharp.fluid}></Image>}
+            <div className="OverlayItem_bulletPoints h3">
+              {bulletPoints.split("•").map((e, i) => {
+                return (
+                  <div key={i} className="h4">
+                    • {e}
+                  </div>
+                );
+              })}
             </div>
           </div>
+        ) : (
+          <>
+            <div className="OverlayItem_image1 boxShadow-medium">
+              {image1 && <Image fluid={image1.childImageSharp.fluid}></Image>}
+            </div>
+            <div className="AutoRow-Lg">
+              <div className="OverlayItem_bulletPoints h3">
+                {bulletPoints.split("•").map((e, i) => {
+                  return (
+                    <div key={i} className="h4">
+                      • {e}
+                    </div>
+                  );
+                })}
+              </div>
+              {image2 && (
+                <div
+                  className={`OverlayItem_image2 OverlayItem_image2-${renderBorderClass()} boxShadow-medium`}
+                >
+                  636
+                  <div className={`OverlayItem_border-${renderBorderClass()}`}>
+                    <Image fluid={image2.childImageSharp.fluid}></Image>
+                  </div>
+                </div>
+              )}
+            </div>
+          </>
         )}
-        {image3 && (
+
+        {isDesktop && renderBorderClass() === "foodieDiary" ? (
           <div className="OverlayItem_image3 boxShadow-medium">
             <div className={`OverlayItem_border-${renderBorderClass()}-blue`}>
               <Image fluid={image3.childImageSharp.fluid}></Image>
-            </div>
-          </div>
-        )}
-        {image4 && (
-          <div className="OverlayItem_image4 boxShadow-medium">
-            <div className={`OverlayItem_border-${renderBorderClass()}-black`}>
               <Image fluid={image4.childImageSharp.fluid}></Image>
             </div>
           </div>
+        ) : (
+          image3 && (
+            <div className="OverlayItem_image3 boxShadow-medium">
+              <div className={`OverlayItem_border-${renderBorderClass()}-blue`}>
+                <Image fluid={image3.childImageSharp.fluid}></Image>
+              </div>
+            </div>
+          )
         )}
+        {isDesktop && renderBorderClass() === "foodieDiary"
+          ? ""
+          : image4 && (
+              <div className="OverlayItem_image4 boxShadow-medium">
+                <div
+                  className={`OverlayItem_border-${renderBorderClass()}-black`}
+                >
+                  <Image fluid={image4.childImageSharp.fluid}></Image>
+                </div>
+              </div>
+            )}
       </div>
     </div>
   );
