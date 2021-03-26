@@ -38,29 +38,34 @@
     }
   }
   &_foreground {
-    width: 44vw;
+    width: 46vw;
     top: 9%;
     position: relative;
     @include respond("xs") {
       top: 11%;
+      width: 45vw;
     }
     @include respond("sm") {
       width: 39vw;
     }
     @include respond("md") {
+      top: 10%;
+
       width: 25vw;
     }
     @include respond("lg") {
+      top: 7%;
       width: 35vw;
     }
     @include respond("xl") {
       width: 14vw;
     }
     @media screen and(min-width: 1440px) {
+      top: 10%;
       width: 11vw;
     }
     @media screen and(min-width: 1535px) {
-      width: 12vw;
+      width: 13vw;
     }
     z-index: 1;
     & > video {

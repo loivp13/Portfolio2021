@@ -384,7 +384,7 @@ export default function OverlayItem({
             })}
           </div>
           <div
-            className={`OverlayItem_image2 OverlayItem_image2-${getCurrentOverlay()} boxShadow-medium`}
+            className={`OverlayItem_image2 OverlayItem_image2-${getCurrentOverlay()} `}
           >
             <div className={`OverlayItem_border-${getCurrentOverlay()}`}>
               {/* {image2 && <Image fluid={image2.childImageSharp.fluid}></Image>} */}
@@ -399,7 +399,7 @@ export default function OverlayItem({
           </div>
         </div>
 
-        <div className="OverlayItem_image3 boxShadow-medium">
+        <div className="OverlayItem_image3 ">
           <div className={`OverlayItem_border-${getCurrentOverlay()}-2`}>
             {image3 && <Image fluid={image3.childImageSharp.fluid}></Image>}
           </div>
