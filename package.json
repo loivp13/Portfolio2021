@@ -27,6 +27,7 @@
     "animejs": "^3.2.1",
     "gatsby": "^2.32.9",
     "gatsby-image": "^2.11.0",
+    "gatsby-plugin-force-file-loader": "^0.1.1",
     "gatsby-plugin-image": "^1.0.0",
     "gatsby-plugin-manifest": "^2.12.1",
     "gatsby-plugin-offline": "^3.10.2",

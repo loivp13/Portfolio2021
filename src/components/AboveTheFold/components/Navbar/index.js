@@ -6,7 +6,7 @@ import { useMediaQuery } from "react-responsive";
 
 import "./_index.scss";
 
-export default function Navbar({ isMenuOpen }) {
+export default function Navbar({ isMenuOpen, handleOnMenuClick }) {
   const ImageQuery = useStaticQuery(graphql`
     {
       email: file(relativePath: { eq: "images/Tablet/ICON - email.jpg" }) {
@@ -35,7 +35,7 @@ export default function Navbar({ isMenuOpen }) {
     }
   `);
 
-  const isTablet = useMediaQuery({ query: "(min-device-width: 992px)" });
+  const isTablet = useMediaQuery({ query: "(min-width: 992px)" });
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -58,9 +58,13 @@ export default function Navbar({ isMenuOpen }) {
 
   return (
     <div className="Navbar">
-      <div className="Navbar-menu">
-        <div className="Navbar-menu-item h1-mont">about</div>
-        <div className="Navbar-menu-item h1-mont">work</div>
+      <div onClick={handleOnMenuClick} className="Navbar-menu">
+        <div className="Navbar-menu-item h1-mont">
+          <a href="#about">about</a>
+        </div>
+        <div className="Navbar-menu-item h1-mont">
+          <a href="#work">work</a>
+        </div>
         <div className="Navbar-menu-items">
           <a
             rel="noopener noreferrer"

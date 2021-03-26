@@ -133,20 +133,18 @@ export default function Overlay({
         : document.body.scrollTop;
       setState({
         ...state,
-        top: y + h,
+        top: h,
       });
     }
   };
 
-  if (typeof window !== "undefined") {
-    const overlayAnimationOpen = anime({
-      targets: ".Overlay",
-      translateY: `-100vh`,
-      easing: "linear",
-      duration: 450,
-      autoplay: true,
-    });
-  }
+  const overlayAnimationOpen = anime({
+    targets: ".Overlay",
+    translateY: `-100vh`,
+    easing: "linear",
+    duration: 450,
+    autoplay: true,
+  });
 
   const handleClosingClick = () => {
     anime({
@@ -453,9 +451,5 @@ export default function Overlay({
         );
     }
   };
-  return (
-    <div className="Overlay" style={{ top: top }}>
-      {renderOverlay()}
-    </div>
-  );
+  return <div className="Overlay">{renderOverlay()}</div>;
 }

@@ -404,9 +404,5 @@ export default function Overlay2({
         );
     }
   };
-  return (
-    <div className="Overlay" style={{ top: top }}>
-      {renderOverlay()}
-    </div>
-  );
+  return <div className="Overlay">{renderOverlay()}</div>;
 }

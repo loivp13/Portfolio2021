@@ -176,10 +176,10 @@ export default function OverlayItem({
       let ratio;
       switch (getCurrentOverlay()) {
         case "clever":
-          ratio = 9052 / 972;
+          ratio = 6192 / 972;
           break;
         case "hearts":
-          ratio = 4103 / 972;
+          ratio = 3704 / 972;
           break;
         case "netflix":
           ratio = 6175 / 972;

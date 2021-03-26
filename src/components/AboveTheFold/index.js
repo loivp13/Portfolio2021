@@ -16,7 +16,10 @@ export default function AboveTheFold() {
         isMenuOpen={isMenuOpen}
         handleOnMenuClick={handleOnMenuClick}
       ></Header>
-      <Navbar isMenuOpen={isMenuOpen}></Navbar>
+      <Navbar
+        handleOnMenuClick={handleOnMenuClick}
+        isMenuOpen={isMenuOpen}
+      ></Navbar>
       <Hero></Hero>
     </div>
   );

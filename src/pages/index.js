@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import Seo from "./Seo";
 import Footer from "../components/Footer";
@@ -20,8 +20,15 @@ const Home = () => {
     showOverlay: false,
     currentOverlay2: 0,
     showOverlay2: 0,
+    renderWorkComponent: false,
   });
-  const { currentOverlay, showOverlay, currentOverlay2, showOverlay2 } = state;
+  const {
+    currentOverlay,
+    showOverlay,
+    currentOverlay2,
+    showOverlay2,
+    renderWorkComponent,
+  } = state;
   const handleChangeOverlayClick = (overlay) => {
     setState({
       ...state,
@@ -36,19 +43,23 @@ const Home = () => {
   };
   const handleShowOverlayClick = (overlay) => {
     setState({
+      ...state,
       showOverlay: !showOverlay,
       currentOverlay: overlay,
     });
   };
   const handleShowOverlayClick2 = (overlay) => {
     setState({
+      ...state,
       showOverlay2: !showOverlay2,
       currentOverlay2: overlay,
     });
   };
 
-  const minTabletSize = useMediaQuery({ query: "(min-device-width: 768px" });
-
+  const minTabletSize = useMediaQuery({ query: "(max-width: 769px" });
+  useEffect(() => {
+    setState({ ...state, renderWorkComponent: true });
+  }, []);
   return (
     <main className="Home">
       <Seo></Seo>
@@ -68,19 +79,21 @@ const Home = () => {
       ) : null}
 
       <AboveTheFold></AboveTheFold>
-      {minTabletSize ? (
-        <WorkLargeScreen
-          currentOverlay={currentOverlay2}
-          handleShowOverlayClick={handleShowOverlayClick}
-          handleShowOverlayClick2={handleShowOverlayClick2}
-        ></WorkLargeScreen>
-      ) : (
-        <Work
-          currentOverlay={currentOverlay2}
-          handleShowOverlayClick={handleShowOverlayClick}
-          handleShowOverlayClick2={handleShowOverlayClick2}
-        ></Work>
-      )}
+      {renderWorkComponent ? (
+        minTabletSize ? (
+          <Work
+            currentOverlay={currentOverlay2}
+            handleShowOverlayClick={handleShowOverlayClick}
+            handleShowOverlayClick2={handleShowOverlayClick2}
+          ></Work>
+        ) : (
+          <WorkLargeScreen
+            currentOverlay={currentOverlay2}
+            handleShowOverlayClick={handleShowOverlayClick}
+            handleShowOverlayClick2={handleShowOverlayClick2}
+          ></WorkLargeScreen>
+        )
+      ) : null}
       <AboutMe></AboutMe>
       <Contact></Contact>
       <Footer></Footer>
