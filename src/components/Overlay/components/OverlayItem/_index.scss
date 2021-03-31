@@ -6,6 +6,11 @@
   @include respond("xl") {
     padding-top: 2rem;
   }
+  &_backToTop {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
   &_Navbar {
     display: flex;
     justify-content: space-between;
@@ -146,6 +151,9 @@
     @include respond("sm") {
       font-size: 24px;
     }
+    @media screen and(min-width: 1400px) {
+      width: 105%;
+    }
 
     @include respond("md") {
       align-items: center;
@@ -203,7 +211,6 @@
     }
   }
   &_image1 {
-    margin-left: 1rem;
     & + div {
       @include respond("lg") {
         padding: 4rem;
@@ -332,7 +339,7 @@
           padding: 4rem 3.5rem;
         }
         @include respond("xl") {
-          padding: 5remrem 4rem;
+          padding: 5rem 6rem;
         }
       }
     }

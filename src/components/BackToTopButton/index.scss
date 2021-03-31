@@ -1,0 +1,41 @@
+.BackToTopButton {
+  position: fixed;
+  z-index: 7000;
+  bottom: 0;
+  right: 0;
+  transform: translate(-10%, -63%);
+  @include respond("md") {
+    transform: translate(-55%, -40%);
+  }
+  @include respond("lg") {
+    transform: translate(-55%, -40%);
+  }
+
+  &-arrow {
+    transform: rotate(-90deg);
+    padding: 1.5rem;
+  }
+  &-container {
+    background-color: var(--primary-light);
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    flex-direction: column;
+    @include respond("md") {
+      width: 5rem;
+      height: 5rem;
+    }
+    @include respond("lg") {
+      width: 6rem;
+      height: 6rem;
+    }
+    & > p {
+      padding-top: 0.5rem;
+      color: white;
+      text-align: center;
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, 0px);
+    }
+  }
+}

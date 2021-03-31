@@ -47,7 +47,7 @@ export default function Overlay({
         }
       }
       HMODesktop: file(
-        relativePath: { eq: "images/hero images without shadow/hmoblog2.png" }
+        relativePath: { eq: "images/hero images without shadow/hmoblog2_1.png" }
       ) {
         childImageSharp {
           fluid(quality: 100, maxWidth: 1534) {
@@ -65,10 +65,10 @@ export default function Overlay({
         }
       }
       HMOPage: file(
-        relativePath: { eq: "images/Desktop/HMO Overlay/Mask Group 6.jpg" }
+        relativePath: { eq: "images/Desktop/HMO Overlay/heartsinmyoven2.0.png" }
       ) {
         childImageSharp {
-          fluid(quality: 100, maxHeight: 1475) {
+          fluid(quality: 100, maxWidth: 1120) {
             ...GatsbyImageSharpFluid
           }
         }
@@ -115,6 +115,7 @@ export default function Overlay({
 
   const handleWindowScroll = (e) => {
     if (typeof window !== "undefined") {
+      //get how many px user has scrolled
       var h = Math.max(
         document.documentElement.clientHeight,
         window.innerHeight || 0
@@ -138,6 +139,7 @@ export default function Overlay({
     }
   };
 
+  //run overlay animation on mount
   const overlayAnimationOpen = anime({
     targets: ".Overlay",
     translateY: `-100vh`,
@@ -146,6 +148,7 @@ export default function Overlay({
     autoplay: true,
   });
 
+  //run closing animation on click
   const handleClosingClick = () => {
     anime({
       targets: ".Overlay",
@@ -162,13 +165,22 @@ export default function Overlay({
   let animationRefRtL = useRef();
   let animationRefLtR = useRef();
   let animationRefLtR2 = useRef();
-  let overlay = useRef();
 
   //Handle Mounting and unmoutning animation
   let overlayElement = useRef(null);
   let overlayItemNavElement = useRef(null);
+  let backToTop = useRef(null);
+  let overlay = useRef();
 
+  //move overlayNav
   const checkIfOverlayHasScrolled = () => {
+    //if scrollTop greater than 200px show backToTop button
+    if (overlayElement.current.scrollTop > 200) {
+      backToTop.current.style.opacity = "1";
+    } else {
+      backToTop.current.style.opacity = "0";
+    }
+    //moveNav on user scroll
     if (isDesktop && overlayElement.current.scrollTop > 0) {
       overlayItemNavElement.current.style.transform = `translateY(${overlayElement.current.scrollTop}px)`;
     } else {
@@ -178,9 +190,10 @@ export default function Overlay({
 
   useEffect(() => {
     //hide body overflow when overlay is showing
+    backToTop.current = document.querySelector(".BackToTopButton");
+    overlayElement.current = document.querySelector(".Overlay");
 
     document.querySelector("html").style.overflow = "hidden";
-    overlayElement.current = document.querySelector(".Overlay");
 
     overlayItemNavElement.current = document.querySelector(
       ".OverlayItem-main .OverlayItem_Navbar"

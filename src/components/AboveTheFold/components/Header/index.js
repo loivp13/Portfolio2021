@@ -75,7 +75,7 @@ export default function Header({ isMenuOpen, handleOnMenuClick }) {
     );
   };
 
-  const isBigScreen = useMediaQuery({ query: "(min-device-width: 992px)" });
+  const isBigScreen = useMediaQuery({ query: "(min-width: 992px)" });
 
   return (
     <div className="Header">

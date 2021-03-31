@@ -17,6 +17,7 @@ $font-mont: "Montserrat", sans-serif;
 
 html {
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 .Home {
   background-color: #2a4e4b1f;

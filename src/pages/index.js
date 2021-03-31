@@ -9,6 +9,7 @@ import Work from "../components/Work";
 import WorkLargeScreen from "../components/WorkLargeScreen";
 import AboutMe from "../components/AboutMe";
 import Contact from "../components/Contact";
+import BackToTopButton from "../components/BackToTopButton";
 
 import { useMediaQuery } from "react-responsive";
 
@@ -63,6 +64,7 @@ const Home = () => {
   return (
     <main className="Home">
       <Seo></Seo>
+      {/* show overlay1 or overlay2 or none */}
       {showOverlay ? (
         <Overlay
           handleChangeOverlayClick={handleChangeOverlayClick}
@@ -78,7 +80,12 @@ const Home = () => {
         ></Overlay2>
       ) : null}
 
+      {/* if showing overlay1 or overlay2 show backToTop button */}
+      {showOverlay || showOverlay2 ? <BackToTopButton></BackToTopButton> : null}
+
       <AboveTheFold></AboveTheFold>
+
+      {/* wait for site to render before checking if size isTablet or larger */}
       {renderWorkComponent ? (
         minTabletSize ? (
           <Work
@@ -94,6 +101,7 @@ const Home = () => {
           ></WorkLargeScreen>
         )
       ) : null}
+
       <AboutMe></AboutMe>
       <Contact></Contact>
       <Footer></Footer>

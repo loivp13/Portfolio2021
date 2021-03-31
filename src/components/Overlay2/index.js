@@ -132,6 +132,7 @@ export default function Overlay2({
   let animationRefLtR = useRef();
   let animationRefLtR2 = useRef();
   let overlay = useRef();
+  let backToTop = useRef(null);
 
   //Handle Mounting and unmoutning animation
   //Handle Mounting and unmoutning animation
@@ -139,6 +140,14 @@ export default function Overlay2({
   let overlayItemNavElement = useRef(null);
 
   const checkIfOverlayHasScrolled = () => {
+    //if scrollTop greater than 200px show backToTop button
+    if (overlayElement.current.scrollTop > 200) {
+      backToTop.current.style.opacity = "1";
+    } else {
+      backToTop.current.style.opacity = "0";
+    }
+
+    //moveNav on user scroll
     if (isDesktop && overlayElement.current.scrollTop > 0) {
       overlayItemNavElement.current.style.transform = `translateY(${overlayElement.current.scrollTop}px)`;
     } else {
@@ -147,6 +156,7 @@ export default function Overlay2({
   };
 
   useEffect(() => {
+    backToTop.current = document.querySelector(".BackToTopButton");
     document.querySelector("html").style.overflow = "hidden";
 
     overlayElement.current = document.querySelector(".Overlay");

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import anime from "animejs/lib/anime.es.js";
 import StrangerThingsGif from "../StrangerThingsGif";
+import Footer from "../../../Footer";
 
 import { useMediaQuery } from "react-responsive";
 import ButtonHoverLg from "../ButtonHoverLg";
@@ -162,15 +163,18 @@ export default function OverlayItem({
     });
   };
   const slideElement = useRef(null);
+
   useEffect(() => {
     //hide body overflow when overlay is showing
     document.querySelector("html").style.overflow = "hidden";
-    //Image Animation
+
+    //rerenders when window is resized
     window.addEventListener("resize", toggleRender);
+
+    //Image Animation
     slideElement.current = document.querySelector(
       `.OverlayItem_border-${getCurrentOverlay()}-image`
     );
-
     if (slideElement.current) {
       let imageWidth = slideElement.current.offsetWidth;
       let ratio;
@@ -187,26 +191,20 @@ export default function OverlayItem({
       }
       let height = imageWidth * ratio;
       slideElement.current.style.height = `${height}px`;
-      slideElement.current.style.backgroundSize = `100% ${height}px`;
+      // slideElement.current.style.backgroundSize = `100% ${height}px`;
 
       anime({
         targets: `.OverlayItem_border-${getCurrentOverlay()}-image`,
-        keyframes: [
-          { backgroundPosition: `0 -${height * 0}px` },
-          { backgroundPosition: `0 -${height * 0.33333}px`, delay: 1000 },
-          { backgroundPosition: `0 -${height * 0.66666}px`, delay: 1000 },
-          { backgroundPosition: `0 -${height * 0.99999}px`, delay: 1000 },
-        ],
-
-        duration: "2000",
+        keyframes: [{ backgroundPosition: `0 -${height}px` }],
+        duration: 8000,
         loop: true,
         easing: "linear",
+        delay: 0,
       });
     }
   }, [isDesktop, currentOverlay]);
 
-  //if(overlay element has been scrolled make nav sticky)
-
+  //changes button state on hover
   const handleOnMouseEnterButtonsHover = (btn) => {
     switch (btn) {
       case "close":
@@ -234,6 +232,8 @@ export default function OverlayItem({
         break;
     }
   };
+
+  //delay unmoutning for animations
   const handleDelayUnmountingClick = (direction) => {
     if (direction === "ltr") {
       animationRefLtR.current.play();
@@ -264,103 +264,103 @@ export default function OverlayItem({
 
   return (
     <div className={` OverlayItem  ${className}`}>
-      <div className="OverlayItem_Navbar">
-        <div className="OverlayItem_arrows">
-          {/* prev button */}
+      <div id="OverlayItem_Nav" className="OverlayItem_main">
+        <div className="OverlayItem_Navbar">
+          <div className="OverlayItem_arrows">
+            {/* prev button */}
+            <div
+              onClick={() => {
+                if (overlayId === 1) {
+                  handleDelayUnmountingClick("ltr");
+                } else {
+                  handleDelayUnmountingClick("ltr2");
+                }
+              }}
+              className={`OverlayItem_button ${
+                isPrevButtonHover && "bg-primary-xl"
+              }`}
+              onMouseEnter={() => {
+                handleOnMouseEnterButtonsHover("prev");
+              }}
+              onMouseLeave={() => {
+                handleOnMouseEnterButtonsHover("prev");
+              }}
+            >
+              {isDesktop ? (
+                <ButtonHoverLg
+                  isHover={isPrevButtonHover}
+                  image={ImageQuery.leftPointerLg}
+                  imageHover={ImageQuery.leftPointerLgHover}
+                ></ButtonHoverLg>
+              ) : (
+                <Image
+                  fluid={ImageQuery.leftPointer.childImageSharp.fluid}
+                ></Image>
+              )}
+            </div>
+            {/* next button */}
+            <div
+              onClick={() => {
+                handleDelayUnmountingClick("rtl");
+              }}
+              className={`OverlayItem_button ${
+                isNextButtonHover && "bg-primary-xl"
+              }`}
+              onMouseEnter={() => {
+                handleOnMouseEnterButtonsHover("next");
+              }}
+              onMouseLeave={() => {
+                handleOnMouseEnterButtonsHover("next");
+              }}
+            >
+              {isDesktop ? (
+                <ButtonHoverLg
+                  isHover={isNextButtonHover}
+                  image={ImageQuery.rightPointerLg}
+                  imageHover={ImageQuery.rightPointerLgHover}
+                ></ButtonHoverLg>
+              ) : (
+                <Image
+                  fluid={ImageQuery.rightPointer.childImageSharp.fluid}
+                ></Image>
+              )}
+            </div>
+          </div>
+          {/* close button */}
           <div
-            onClick={() => {
-              if (overlayId === 1) {
-                handleDelayUnmountingClick("ltr");
-              } else {
-                handleDelayUnmountingClick("ltr2");
-              }
-            }}
-            className={`OverlayItem_button ${
-              isPrevButtonHover && "bg-primary-xl"
-            }`}
             onMouseEnter={() => {
-              handleOnMouseEnterButtonsHover("prev");
+              handleOnMouseEnterButtonsHover("close");
             }}
             onMouseLeave={() => {
-              handleOnMouseEnterButtonsHover("prev");
+              handleOnMouseEnterButtonsHover("close");
             }}
+            className="OverlayItem_close"
           >
-            {isDesktop ? (
-              <ButtonHoverLg
-                isHover={isPrevButtonHover}
-                image={ImageQuery.leftPointerLg}
-                imageHover={ImageQuery.leftPointerLgHover}
-              ></ButtonHoverLg>
-            ) : (
-              <Image
-                fluid={ImageQuery.leftPointer.childImageSharp.fluid}
-              ></Image>
-            )}
-          </div>
-          {/* next button */}
-          <div
-            onClick={() => {
-              handleDelayUnmountingClick("rtl");
-            }}
-            className={`OverlayItem_button ${
-              isNextButtonHover && "bg-primary-xl"
-            }`}
-            onMouseEnter={() => {
-              handleOnMouseEnterButtonsHover("next");
-            }}
-            onMouseLeave={() => {
-              handleOnMouseEnterButtonsHover("next");
-            }}
-          >
-            {isDesktop ? (
-              <ButtonHoverLg
-                isHover={isNextButtonHover}
-                image={ImageQuery.rightPointerLg}
-                imageHover={ImageQuery.rightPointerLgHover}
-              ></ButtonHoverLg>
-            ) : (
-              <Image
-                fluid={ImageQuery.rightPointer.childImageSharp.fluid}
-              ></Image>
-            )}
+            <div
+              onClick={() => {
+                handleClosingClick();
+              }}
+              className={`OverlayItem_button ${
+                isCloseButtonHover && "bg-primary"
+              }`}
+            >
+              {isDesktop ? (
+                <ButtonHoverLg
+                  isHover={isCloseButtonHover}
+                  image={ImageQuery.XLg}
+                  imageHover={ImageQuery.XLgHover}
+                ></ButtonHoverLg>
+              ) : (
+                <Image fluid={ImageQuery.X.childImageSharp.fluid}></Image>
+              )}
+            </div>
           </div>
         </div>
-        {/* close button */}
-        <div
-          onMouseEnter={() => {
-            handleOnMouseEnterButtonsHover("close");
-          }}
-          onMouseLeave={() => {
-            handleOnMouseEnterButtonsHover("close");
-          }}
-          className="OverlayItem_close"
-        >
-          <div
-            onClick={() => {
-              handleClosingClick();
-            }}
-            className={`OverlayItem_button ${
-              isCloseButtonHover && "bg-primary"
-            }`}
-          >
-            {isDesktop ? (
-              <ButtonHoverLg
-                isHover={isCloseButtonHover}
-                image={ImageQuery.XLg}
-                imageHover={ImageQuery.XLgHover}
-              ></ButtonHoverLg>
-            ) : (
-              <Image fluid={ImageQuery.X.childImageSharp.fluid}></Image>
-            )}
-          </div>
-        </div>
-      </div>
-      <div className="OverlayItem_main">
         <div className="OverlayItem_title h2">{title}</div>
         <div className="OverlayItem_description">{description}</div>
         <div className="OverlayItem_link">
           <a className="" target="_blank" href={link}>
-            <button className="OverlayItem_visit boxShadow-light">
+            <button className="OverlayItem_visit boxShadow-light" z>
               Visit Site
             </button>
           </a>
@@ -405,6 +405,7 @@ export default function OverlayItem({
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 }
