@@ -31,6 +31,9 @@ export default function Header({ isMenuOpen, handleOnMenuClick }) {
       }
     }
   `);
+
+  const isBigScreen = useMediaQuery({ query: "(min-width: 992px)" });
+
   const renderButtonIcon = () => {
     return (
       <>
@@ -75,24 +78,19 @@ export default function Header({ isMenuOpen, handleOnMenuClick }) {
     );
   };
 
-  const isBigScreen = useMediaQuery({ query: "(min-width: 992px)" });
-
   return (
     <div className="Header">
       <Logo></Logo>
-      {isBigScreen ? (
-        renderNavItems()
-      ) : (
-        <div
-          className="Navbar-button"
-          onClick={handleOnMenuClick}
-          onKeyDown={handleOnMenuClick}
-          role="button"
-          tabIndex={0}
-        >
-          {renderButtonIcon()}
-        </div>
-      )}
+      <div
+        className="Navbar-button"
+        onClick={handleOnMenuClick}
+        onKeyDown={handleOnMenuClick}
+        role="button"
+        tabIndex={0}
+      >
+        {renderButtonIcon()}
+      </div>
+      {renderNavItems()}
     </div>
   );
 }

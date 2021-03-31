@@ -3,6 +3,34 @@
   border-radius: 15px;
   display: flex;
   justify-content: center;
+  overflow: hidden;
+  position: relative;
+  &::before {
+    width: 200%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    content: "";
+    background-color: #ffffff12;
+    transform: rotate(-44deg) translate(-0%, -100%);
+    transform-origin: 100% 0;
+    transition: transform 1s linear;
+  }
+  &:hover::before {
+    transform: rotate(0deg) translate(-0%, -100%);
+  }
+
+  @include respond("md") {
+    &::before {
+      transform: rotate(-31deg) translate(-0%, -100%);
+    }
+  }
+  @include respond("xl") {
+    &::before {
+      transform: rotate(-21deg) translate(-0%, -100%);
+    }
+  }
   &_button {
     &-more {
       text-transform: uppercase;

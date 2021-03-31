@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "gatsby-image";
 import { useStaticQuery, graphql } from "gatsby";
 import anime from "animejs/lib/anime.es.js";
@@ -34,7 +34,6 @@ export default function Navbar({ isMenuOpen, handleOnMenuClick }) {
       }
     }
   `);
-
   const isTablet = useMediaQuery({ query: "(min-width: 992px)" });
 
   useEffect(() => {

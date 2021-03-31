@@ -21,7 +21,7 @@ export default function BackToTopButton() {
     }
   `);
   return (
-    <div className="BackToTopButton opacity-none">
+    <div className="BackToTopButton opacity-none boxShadow-medium">
       <a href="#OverlayItem_Nav">
         <div className="BackToTopButton-container">
           <p>TOP</p>

@@ -8,8 +8,10 @@ export default function AboveTheFold() {
 
   const { isMenuOpen } = state;
   const handleOnMenuClick = () => {
+    console.log("click");
     setState({ ...state, isMenuOpen: !isMenuOpen });
   };
+
   return (
     <div className="AboveTheFold">
       <Header

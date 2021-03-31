@@ -5,11 +5,33 @@
   margin: 1rem;
   border-radius: 15px;
   position: relative;
+  overflow: hidden;
+  &::before {
+    width: 200%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    content: "";
+    background-color: #ffffff12;
+    transform: rotate(-44deg) translate(-0%, -100%);
+    transform-origin: 100% 0;
+    transition: transform 1s linear;
+  }
+  &:hover::before {
+    transform: rotate(0deg) translate(-0%, -100%);
+  }
   @include respond("xs") {
     padding: 6%;
+    &::before {
+      transform: rotate(-32deg) translate(-0%, -100%);
+    }
   }
   @include respond("sm") {
     padding: 4% 8%;
+    &::before {
+      transform: rotate(-26deg) translate(-0%, -100%);
+    }
   }
   @include respond("md") {
     padding: 5% 10%;
@@ -17,10 +39,16 @@
     border-radius: 0;
     margin: 0;
     margin-bottom: 2rem;
+    &::before {
+      transform: rotate(-19deg) translate(-0%, -100%);
+    }
   }
   @include respond("xl") {
     padding: 5% 20%;
     margin-bottom: 0;
+    &::before {
+      transform: rotate(-15deg) translate(-0%, -100%);
+    }
   }
 
   &_title {

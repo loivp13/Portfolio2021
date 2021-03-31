@@ -13,7 +13,7 @@ export default function Work({
   currentOverlay2,
 }) {
   const isLargerThanTablet = useMediaQuery({
-    query: "(min-device-width: 1824px)",
+    query: "(min-width: 1824px)",
   });
   const ImageQuery = useStaticQuery(graphql`
     {
@@ -98,7 +98,7 @@ export default function Work({
       autoplay: true,
       duration: 450,
       easing: "linear",
-      maxHeight: "1200px",
+      maxHeight: "1600px",
     });
   }, [showingMoreWork, currentOverlay]);
 

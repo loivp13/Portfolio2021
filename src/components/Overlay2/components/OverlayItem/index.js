@@ -307,7 +307,9 @@ export default function OverlayItem2({
         <div className="OverlayItem_description">{description}</div>
         <div className="OverlayItem_link">
           <a className="" target="_blank" href={link}>
-            <button className="OverlayItem_visit">Visit Site</button>
+            <button className="OverlayItem_visit boxShadow-medium">
+              Visit Site
+            </button>
           </a>
         </div>
         <div className="OverlayItem_excerpt p">

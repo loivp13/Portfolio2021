@@ -34,7 +34,7 @@
   }
   &_showMore {
     position: relative;
-    max-height: 0;
+    max-height: 0%;
     overflow: hidden;
     & > *:not(:last-of-type) {
       margin-bottom: 2rem;

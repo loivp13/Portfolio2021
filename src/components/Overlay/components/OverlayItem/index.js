@@ -180,7 +180,7 @@ export default function OverlayItem({
       let ratio;
       switch (getCurrentOverlay()) {
         case "clever":
-          ratio = 6192 / 972;
+          ratio = 3625 / 324;
           break;
         case "hearts":
           ratio = 3704 / 972;
@@ -360,7 +360,7 @@ export default function OverlayItem({
         <div className="OverlayItem_description">{description}</div>
         <div className="OverlayItem_link">
           <a className="" target="_blank" href={link}>
-            <button className="OverlayItem_visit boxShadow-light" z>
+            <button className="OverlayItem_visit boxShadow-light boxShadow-medium">
               Visit Site
             </button>
           </a>
