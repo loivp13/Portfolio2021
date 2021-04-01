@@ -56,6 +56,9 @@
     width: 100%;
     justify-content: space-around;
     align-items: center;
+    @include respond("lg") {
+      margin: 0.75rem;
+    }
     &-left {
       width: 50%;
       box-shadow: 6px 6px 9px 0px #80808059;

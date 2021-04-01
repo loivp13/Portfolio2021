@@ -6,7 +6,7 @@ import Image from "gatsby-image";
 export default function AboutMe() {
   const ImageQuery = useStaticQuery(graphql`
     {
-      aboutme: file(relativePath: { eq: "images/Desktop/ICON - github.png" }) {
+      aboutme: file(relativePath: { eq: "images/headshot.png" }) {
         childImageSharp {
           fluid(quality: 100) {
             ...GatsbyImageSharpFluid
@@ -35,7 +35,7 @@ export default function AboutMe() {
         </p>
         <p>
           I specialize in <span className="text-bold">React</span> and its
-          ecosystem for the <span className="text-bold">Front End</span> and
+          ecosystem for the <span className="text-bold">Front End</span> and{" "}
           <span className="text-bold">NodeJS</span> for the
           <span className="text-bold"> Back End</span>.
         </p>
