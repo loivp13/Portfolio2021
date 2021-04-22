@@ -1,8 +1,8 @@
 .Card {
   width: 100%;
-  border-radius: 15px;
+  border-radius: 45px;
   background-color: white;
-  padding: 1rem;
+  padding: 1.35rem 1.35rem 1.35rem 1.35rem;
   box-shadow: 1px 1px 12px #2a4e4b2d;
 
   & > *:not(:last-child) {

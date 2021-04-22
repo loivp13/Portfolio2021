@@ -178,9 +178,12 @@ export default function OverlayItem({
     if (slideElement.current) {
       let imageWidth = slideElement.current.offsetWidth;
       let ratio;
+      //if clever account page set sliderElement duration 8 sec else increase to 10 sec
+      let duration = 8000;
       switch (getCurrentOverlay()) {
         case "clever":
           ratio = 3625 / 324;
+          duration = 12000;
           break;
         case "hearts":
           ratio = 3704 / 972;
@@ -193,10 +196,12 @@ export default function OverlayItem({
       slideElement.current.style.height = `${height}px`;
       // slideElement.current.style.backgroundSize = `100% ${height}px`;
 
+      console.log(ratio);
+
       anime({
         targets: `.OverlayItem_border-${getCurrentOverlay()}-image`,
         keyframes: [{ backgroundPosition: `0 -${height}px` }],
-        duration: 8000,
+        duration,
         loop: true,
         easing: "linear",
         delay: 0,
@@ -262,9 +267,17 @@ export default function OverlayItem({
     }
   };
 
+  const renderIdForBackToTop = () => {
+    if (className === "OverlayItem-main") {
+      return "OverlayItem_Nav";
+    } else {
+      return "";
+    }
+  };
+
   return (
-    <div className={` OverlayItem  ${className}`}>
-      <div id="OverlayItem_Nav" className="OverlayItem_main">
+    <div id={renderIdForBackToTop()} className={` OverlayItem  ${className}`}>
+      <div className="OverlayItem_main">
         <div className="OverlayItem_Navbar">
           <div className="OverlayItem_arrows">
             {/* prev button */}

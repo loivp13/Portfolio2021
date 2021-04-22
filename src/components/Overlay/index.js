@@ -285,7 +285,7 @@ export default function Overlay({
               animationRefLtR={animationRefLtR}
               animationRefLtR2={animationRefLtR2}
               animationRefRtL={animationRefRtL}
-              className={"OverlayItem-main "}
+              className={"OverlayItem-main"}
               handleClosingClick={handleClosingClick}
               handleShowOverlayClick={handleShowOverlayClick}
               handleChangeOverlayClick={handleChangeOverlayClick}
