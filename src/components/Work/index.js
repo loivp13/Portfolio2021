@@ -91,7 +91,6 @@ export default function Work({
   let showMoreAnimation = useRef();
 
   useEffect(() => {
-    console.log("showmore");
     showMoreAnimation.current = anime({
       targets: ".Work_showMore",
       translateY: "0%",
@@ -100,6 +99,21 @@ export default function Work({
       easing: "linear",
       maxHeight: "1600px",
     });
+
+    if (window) {
+      let WOW = require("wowjs");
+
+      let wow = new WOW.WOW({
+        boxClass: "wow-line",
+        animateClass: "animated",
+        offset: 200,
+        mobile: true,
+        live: false,
+        callback: function (box) {},
+        scrollContainer: null,
+      });
+      wow.init();
+    }
   }, [showingMoreWork, currentOverlay]);
 
   const handleShowMoreWorkClick = () => {
@@ -122,8 +136,8 @@ export default function Work({
 
   return (
     <div id="work" className="Work">
-      <div className=" h3 Work_title ">WORK</div>
-      <div className="Work_line-green"></div>
+      <div className=" h3 Work_title">WORK</div>
+      <div className="Work_line-green wow-line animate__fadeInUp"></div>
       <Card
         image={ImageQuery.cleverAccountant}
         title={"CLEVER ACCOUNTANTS"}

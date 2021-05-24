@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import HoverImage from "./components/HoverImage";
 
@@ -57,9 +57,32 @@ export default function Contact() {
       }
     }
   `);
+  useEffect(() => {
+    if (window) {
+      let WOW = require("wowjs");
+
+      let wow = new WOW.WOW({
+        boxClass: `wow-contact`,
+        animateClass: "aniamted",
+        offset: 100, // distance to the element when triggering the animation (default is 0)
+        mobile: true, // trigger animations on mobile devices (default is true)
+        live: false, // act on asynchronously loaded content (default is true)
+        callback: function (box) {
+          // the callback is fired every time an animation is started
+          // the argument that is passed in is the DOM node being animated
+        },
+        scrollContainer: null, // optional scroll container selector, otherwise use window
+      });
+      wow.init();
+    }
+  }, []);
 
   return (
-    <div id="contact" className="Contact">
+    <div
+      data-wow-duration="2s"
+      id="contact"
+      className="Contact wow-contact animate__fadeInLeft"
+    >
       <div className="Contact_title h3">contact</div>
       <div className="Contact_images">
         <a

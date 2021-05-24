@@ -65,7 +65,6 @@ export default function WorkLargeScreen({
   let showMoreAnimation = useRef();
 
   useEffect(() => {
-    console.log("showmore");
     showMoreAnimation.current = anime({
       targets: ".WorkLargeScreen_showMore",
       translateY: "0%",
@@ -74,6 +73,25 @@ export default function WorkLargeScreen({
       easing: "linear",
       maxHeight: "1200px",
     });
+
+    if (window) {
+      let WOW = require("wowjs");
+
+      let wow = new WOW.WOW({
+        boxClass: `wow-line`, // animated element css class (default is wow)
+        animateClass: "animated", // animation css class (default is animated)
+        offset: 200, // distance to the element when triggering the animation (default is 0)
+        mobile: true, // trigger animations on mobile devices (default is true)
+        live: false, // act on asynchronously loaded content (default is true)
+        callback: function (box) {
+          // the callback is fired every time an animation is started
+          // the argument that is passed in is the DOM node being animated
+          console.log(box);
+        },
+        scrollContainer: null, // optional scroll container selector, otherwise use window
+      });
+      wow.init();
+    }
   }, [showingMoreWork, currentOverlay]);
 
   const handleShowMoreWorkClick = () => {
@@ -95,9 +113,11 @@ export default function WorkLargeScreen({
   };
 
   return (
-    <div id="work" className="WorkLargeScreen">
+    <div id="work" className="WorkLargeScreen ">
       <div className=" h3 Work_title ">WORK</div>
-      <div className="WorkLargeScreen_line-green"></div>
+      <div
+        className={"WorkLargeScreen_line-green wow-line animate__fadeInUp"}
+      ></div>
       <CardLargeScreen
         image={ImageQuery.cleverAccountant}
         title={"CLEVER ACCOUNTANTS"}

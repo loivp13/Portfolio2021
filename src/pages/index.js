@@ -14,7 +14,6 @@ import BackToTopButton from "../components/BackToTopButton";
 import { useMediaQuery } from "react-responsive";
 
 import "./_index.scss";
-
 const Home = () => {
   const [state, setState] = useState({
     currentOverlay: 0,
