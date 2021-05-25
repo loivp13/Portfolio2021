@@ -145,7 +145,7 @@
   }
   &_excerpt {
     padding: 1rem;
-
+    margin-bottom: 1.5rem;
     display: flex;
     justify-content: space-between;
     @include respond("sm") {
