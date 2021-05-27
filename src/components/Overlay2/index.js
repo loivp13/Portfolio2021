@@ -258,7 +258,7 @@ export default function Overlay2({
               image3={ImageQuery.FoodieDiaryPage}
               image4={ImageQuery.FoodieDiaryPage2}
               overlayId={0}
-              link="https://thecleveraccountants.com/"
+              link="https://myfoodiediary.dev/"
             ></OverlayItem>
             <OverlayItem
               animationRefLtR={animationRefLtR}
@@ -313,7 +313,7 @@ export default function Overlay2({
               image3={ImageQuery.FoodieDiaryPage}
               image4={ImageQuery.FoodieDiaryPage2}
               overlayId={0}
-              link="https://thecleveraccountants.com/"
+              link="https://myfoodiediary.dev/"
             ></OverlayItem>
             <OverlayItem
               animationRefLtR={animationRefLtR}
