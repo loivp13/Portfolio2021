@@ -283,7 +283,7 @@ export default function Overlay2({
               image3={null}
               image4={null}
               overlayId={1}
-              link={"https://heartsinmyoven.com/"}
+              link={"https://github.com/loivp13/gameApp-react"}
             ></OverlayItem>
           </>
         );
@@ -338,7 +338,7 @@ export default function Overlay2({
               image3={null}
               image4={null}
               overlayId={1}
-              link={"https://heartsinmyoven.com/"}
+              link={"https://github.com/loivp13/gameApp-react"}
             ></OverlayItem>
             <OverlayItem
               animationRefLtR={animationRefLtR}
@@ -348,7 +348,7 @@ export default function Overlay2({
               handleChangeOverlayClick={handleChangeOverlayClick2}
               handleClosingClick={handleClosingClick2}
               handleShowOverlayClick={handleShowOverlayClick2}
-              title={"Game Apps"}
+              title={"Game App"}
               description={"NodeJS, Express, Webpack, HTML, CSS, Heroku & PUG"}
               excerpt={
                 "A personal project for users to compare and create lists for games worldwide."
@@ -361,7 +361,7 @@ export default function Overlay2({
               image3={null}
               image4={null}
               overlayId={2}
-              link={"https://netflix-react.herokuapp.com/"}
+              link={"https://github.com/loivp13/gameApp.v2"}
             ></OverlayItem>
           </>
         );
@@ -388,7 +388,7 @@ export default function Overlay2({
               }
               image1={ImageQuery.GameDealsDesktop}
               overlayId={1}
-              link={"https://heartsinmyoven.com/"}
+              link={"https://github.com/loivp13/gameApp-react"}
             ></OverlayItem>
             <OverlayItem
               animationRefLtR={animationRefLtR}
@@ -408,7 +408,7 @@ export default function Overlay2({
               }
               image1={ImageQuery.GameAppDesktop}
               overlayId={2}
-              link={"https://netflix-react.herokuapp.com/"}
+              link={"https://github.com/loivp13/gameApp.v2"}
             ></OverlayItem>
           </>
         );

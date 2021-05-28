@@ -210,9 +210,16 @@ export default function OverlayItem2({
         break;
     }
   };
+  const renderIdForBackToTop = () => {
+    if (className === "OverlayItem-main") {
+      return "OverlayItem_Nav";
+    } else {
+      return "";
+    }
+  };
 
   return (
-    <div className={` OverlayItem  ${className}`}>
+    <div id={renderIdForBackToTop()} className={` OverlayItem  ${className}`}>
       <div className="OverlayItem_Navbar">
         <div className="OverlayItem_arrows">
           {/* prev button */}
@@ -308,7 +315,7 @@ export default function OverlayItem2({
         <div className="OverlayItem_link">
           <a className="" target="_blank" href={link}>
             <button className="OverlayItem_visit boxShadow-medium">
-              Visit Site
+              Visit {title === "My Foodie Diary" ? "Site" : "GitHub"}
             </button>
           </a>
         </div>
