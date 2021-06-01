@@ -403,7 +403,7 @@ export default function Overlay({
               image2={ImageQuery.NetflixMobile}
               image3={ImageQuery.NetflixPage}
               overlayId={2}
-              link={"https://netflix.loivanpham.com/"}
+              link={"https://github.com/loivp13/netflix-react"}
             ></OverlayItem>
           </>
         );
@@ -458,7 +458,7 @@ export default function Overlay({
               image2={ImageQuery.NetflixMobile}
               image3={ImageQuery.NetflixPage}
               overlayId={2}
-              link={"https://netflix.loivanpham.com/"}
+              link={"https://github.com/loivp13/netflix-react"}
             ></OverlayItem>
           </>
         );
