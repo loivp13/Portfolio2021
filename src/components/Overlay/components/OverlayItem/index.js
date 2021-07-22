@@ -140,7 +140,7 @@ export default function OverlayItem({
       case 1:
         return "hearts";
       case 2:
-        return "netflix";
+        return "timer";
     }
   };
   const [state, setState] = useState({
@@ -188,13 +188,18 @@ export default function OverlayItem({
         case "hearts":
           ratio = 3704 / 972;
           break;
-        case "netflix":
-          ratio = 6175 / 972;
+        case "timer":
+          ratio = 1;
           break;
       }
-      let height = imageWidth * ratio;
-      slideElement.current.style.height = `${height}px`;
-      // slideElement.current.style.backgroundSize = `100% ${height}px`;
+      let height;
+      if(ratio === 1){
+        slideElement.current.style.height ='100%'
+      }else {
+        height = imageWidth * ratio;
+        slideElement.current.style.height = `${height}px`;
+        // slideElement.current.style.backgroundSize = `100% ${height}px`;
+      }
 
       console.log(ratio);
 
@@ -205,6 +210,7 @@ export default function OverlayItem({
         loop: true,
         easing: "linear",
         delay: 0,
+        autoplay: false
       });
     }
   }, [isDesktop, currentOverlay]);
@@ -401,13 +407,10 @@ export default function OverlayItem({
           >
             <div className={`OverlayItem_border-${getCurrentOverlay()}`}>
               {/* {image2 && <Image fluid={image2.childImageSharp.fluid}></Image>} */}
-              {getCurrentOverlay() === "netflix" ? (
-                <StrangerThingsGif></StrangerThingsGif>
-              ) : (
+              
                 <div
                   className={`OverlayItem_border-${getCurrentOverlay()}-image`}
                 ></div>
-              )}
             </div>
           </div>
         </div>

@@ -39,10 +39,8 @@ export default function Work({
           }
         }
       }
-      netflix: file(
-        relativePath: {
-          eq: "images/Mobile/more sizes/clever card image-1@2x.png"
-        }
+     timer: file(
+        relativePath: { eq: "images/hero images without shadow/IntervalTimer.png" }
       ) {
         childImageSharp {
           fluid(quality: 100) {
@@ -155,9 +153,9 @@ export default function Work({
         overlayId={1}
       ></Card>
       <Card
-        image={ImageQuery.netflix}
-        title={"Netflix Replica"}
-        description={"ReactJS, NodeJS, Express, Webpack, SASS, Heroku, API"}
+        image={ImageQuery.timer}
+         title={"Interval Timer"}
+        description={"ReactJS, NodeJS, Express, TailwindCss, AWS SES, Nginx, Digital Oean"}
         handleShowOverlayClick={handleShowOverlayClick}
         overlayId={2}
       ></Card>

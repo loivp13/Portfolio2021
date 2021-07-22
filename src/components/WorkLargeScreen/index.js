@@ -37,8 +37,8 @@ export default function WorkLargeScreen({
           }
         }
       }
-      netflix: file(
-        relativePath: { eq: "images/hero images without shadow/netflix.png" }
+      timer: file(
+        relativePath: { eq: "images/hero images without shadow/IntervalTimer.png" }
       ) {
         childImageSharp {
           fluid(quality: 100) {
@@ -135,9 +135,9 @@ export default function WorkLargeScreen({
         overlayId={1}
       ></CardLargeScreen>
       <CardLargeScreen
-        image={ImageQuery.netflix}
-        title={"Netflix Replica"}
-        description={"ReactJS, NodeJS, Express, Webpack, SASS, Heroku, API"}
+        image={ImageQuery.timer}
+        title={"Interval Timer"}
+        description={"ReactJS, NodeJS, Express, TailwindCss, AWS SES, Nginx, Digital Oean"}
         handleShowOverlayClick={handleShowOverlayClick}
         overlayId={2}
       ></CardLargeScreen>

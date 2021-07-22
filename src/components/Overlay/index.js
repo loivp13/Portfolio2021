@@ -73,16 +73,16 @@ export default function Overlay({
           }
         }
       }
-      NetflixDesktop: file(
-        relativePath: { eq: "images/hero images without shadow/netflix.png" }
+      TimerDesktop: file(
+        relativePath: { eq: "images/hero images without shadow/IntervalTimer.png" }
       ) {
         childImageSharp {
-          fluid(quality: 100, maxWidth: 1534) {
+          fluid(quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }
       }
-      NetflixMobile: file(
+      TimerMobile: file(
         relativePath: { eq: "images/Desktop/Netflix/mobile screenshot.jpg" }
       ) {
         childImageSharp {
@@ -372,7 +372,7 @@ export default function Overlay({
                 "I was contracted to work with a food blogger to migrate her entire site from Blogger to WordPress."
               }
               bulletPoints={
-                "Responsive design • Mobile Website • Tablet Website • Email system setup • Contact form setup • Deployment"
+                "Animated timer • Mobile Website • Tablet Website • Email system setup • Contact form setup • Deployment"
               }
               image1={ImageQuery.HMODesktop}
               image2={ImageQuery.HMOMobile}
@@ -389,21 +389,19 @@ export default function Overlay({
               handleChangeOverlayClick={handleChangeOverlayClick}
               handleClosingClick={handleClosingClick}
               handleShowOverlayClick={handleShowOverlayClick}
-              title={"Netflix Replica"}
-              description={
-                "ReactJS, HTML, CSS, NodeJS, Express, Webpack, SASS, Heroku, API"
-              }
+               title={"Interval Timer"}
+               description={"ReactJS, NodeJS, Express, TailwindCss, AWS SES, Nginx, Digital Oean"}
               excerpt={
-                "A project to build a replica of one of the most popular streaming sites of today."
+                "A full stack timer application that allows users to create and customize their timers. User has ability to save their timers and have their data persist to multiple devices."
               }
               bulletPoints={
-                "User's beginning journey • youtube api • carousel • account creation • Mobile Web • Deployment"
+                "Create and customize timers • User accounts • Save to local or server • Email verification • Animated timer"
               }
-              image1={ImageQuery.NetflixDesktop}
-              image2={ImageQuery.NetflixMobile}
-              image3={ImageQuery.NetflixPage}
+              image1={ImageQuery.TimerDesktop}
+              image2={ImageQuery.TimerMobile}
+              image3={ImageQuery.null}
               overlayId={2}
-              link={"https://github.com/loivp13/netflix-react"}
+              link={"https://timer.loivanpham.com/"}
             ></OverlayItem>
           </>
         );
@@ -444,21 +442,19 @@ export default function Overlay({
               handleChangeOverlayClick={handleChangeOverlayClick}
               handleClosingClick={handleClosingClick}
               handleShowOverlayClick={handleShowOverlayClick}
-              title={"Netflix Replica"}
-              description={
-                "ReactJS, HTML, CSS, NodeJS, Express, Webpack, SASS, Heroku, API"
-              }
+              title={"Interval Timer"}
+               description={"ReactJS, NodeJS, Express, TailwindCss, AWS SES, Nginx, Digital Oean"}
               excerpt={
-                "A project to build a replica of one of the most popular streaming sites of today."
+                "A full stack timer application that allows users to create and customize their timers. User has ability to save their timers and have their data persist to multiple devices."
               }
               bulletPoints={
-                "User's beginning journey • youtube api • carousel • account creation • Mobile Web • Deployment"
+                "Create and customize timers • User accounts • Save to local or server • Email verification • Animated timer"
               }
-              image1={ImageQuery.NetflixDesktop}
-              image2={ImageQuery.NetflixMobile}
-              image3={ImageQuery.NetflixPage}
+              image1={ImageQuery.TimerDesktop}
+              image2={ImageQuery.TimerMobile}
+              image3={null}
               overlayId={2}
-              link={"https://github.com/loivp13/netflix-react"}
+              link={"https://timer.loivanpham.com/"}
             ></OverlayItem>
           </>
         );

@@ -373,6 +373,36 @@
         }
       }
     }
+    &-timer {
+      height: 65vh;
+      max-height: 65vh;
+      background-color: var(--tertiary);
+      padding: 2rem 1rem;
+      @include respond("xs") {
+        height: 55vh;
+      }
+      @include respond("lg") {
+        height: 55vh;
+      }
+      @include respond("xl") {
+        height: 65vh;
+      }
+
+      &-image {
+        background-image: url("/MobileTimer.jpg");
+        background-size: 100%;
+      }
+      &-2 {
+        background-color: var(--tertiary);
+
+        @include respond("lg") {
+          padding: 4rem 3.5rem;
+        }
+        @include respond("xl") {
+          padding: 5remrem 4rem;
+        }
+      }
+    }
     &-foodieDiary {
       background-color: var(--tertiary);
       &-image {
